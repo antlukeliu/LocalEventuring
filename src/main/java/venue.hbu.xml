@@ -3,18 +3,17 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name="com.malabanan.LocalEventuring.Venue" table="venue">
-	<id name="venueid" column="venueid" type="int">
+<class name="com.malabanan.localeventuring.Venue" table="venue">
+	<id name="venueId" column="VenueId" type="int">
 		<generator class="increment"></generator>
 	</id>
-	<property name="contactid" column="contactid" type="int"></property>
-	<property name="venuename" column="venuename" type="string"></property>
-	<property name="roomsize" column="roomsize" type="int"></property>
-	<property name="capacity" column="capacity" type="int"></property>
-	<property name="price" column="price" type="int"></property>
-	<property name="photolink" column="photolink" 
-		type="string"></property>
-	<property name="calendarlink" column="calendarlink" type="string"></property>
-	<property name="description" column="description" type="string"></property>
+	<property name="contactId" column="ContactId" type="int"></property>
+	<property name="venueName" column="VenueName" type="string"></property>
+	<property name="roomSize" column="RoomSize" type="int"></property>
+	<property name="capacity" column="Capacity" type="int"></property>
+	<property name="price" column="Price" type="int"></property>
+	<property name="photoLink" column="PhotoLink" type="string"></property>
+	<property name="calendarLink" column="CalendarLink" type="string"></property>
+	<property name="description" column="Description" type="string"></property>
 </class>
 </hibernate-mapping>

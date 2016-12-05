@@ -23,15 +23,16 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	public String home(Model model) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		Venue venue = new Venue();
 		
-		String formattedDate = dateFormat.format(date);
+		venue.setVenueName("Test");
+		venue.setPrice(20);
+		venue.setDescription("Testing for");
+		venue.setContactId(2);
 		
-		model.addAttribute("serverTime", formattedDate );
+		DAOVenue.addVenue(venue);
 		
 		return "home";
 	}
