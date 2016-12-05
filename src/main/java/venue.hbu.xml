@@ -3,19 +3,18 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name="com.guenther.hibernate1.Book" table="books">
-	<id name="rank" column="Rank" type="int">
+<class name="com.malabanan.LocalEventuring.Venue" table="venue">
+	<id name="venueid" column="venueid" type="int">
 		<generator class="increment"></generator>
 	</id>
-	<property name="title" column="Title" type="string"></property>
-	<property name="author" column="Author" type="string"></property>
-	<property name="sales" column="Sales" type="int"></property>
-	<property name="imprint" column="Imprint" type="string"></property>
-	<property name="publisher" column="Publisher" type="string"></property>
-	<property name="yearPublished" column="YearPublished" 
-		type="int"></property>
-	<property name="genre" column="Genre" type="string"></property>
-	<property name="status" column="Status" type="int"></property>
-	<property name="borrower" column="Borrower" type="int"></property>
+	<property name="contactid" column="contactid" type="int"></property>
+	<property name="venuename" column="venuename" type="string"></property>
+	<property name="roomsize" column="roomsize" type="int"></property>
+	<property name="capacity" column="capacity" type="int"></property>
+	<property name="price" column="price" type="int"></property>
+	<property name="photolink" column="photolink" 
+		type="string"></property>
+	<property name="calendarlink" column="calendarlink" type="string"></property>
+	<property name="description" column="description" type="string"></property>
 </class>
 </hibernate-mapping>
