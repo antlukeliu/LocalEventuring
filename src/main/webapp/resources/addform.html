@@ -5,17 +5,19 @@
 <title>Add Form</title>
 </head>
 <body>
-<h1>Add Form</h1>
-<form name="addform" action="../" method="post"
-onsubmit="return validateForm()" method="post">
 
-Venue Name: <input type="text" name="venuename">
-<br>Room Size: <input type="text" name="roomsize">
-<br>Capacity: <input type="text" name="capacity">
-<br>Price: <input type="password" name="price">
+<h1>Add Form</h1>
+<form name="addform" action="../addform" method="get">
+
+Company Name: <input type="text" name="venuename">
+<br>Room Size (sq. ft): <input type="text" name="roomsize">
+<br>Capacity (# of people): <input type="text" name="capacity">
+<br>Price (per hour): <input type="text" name="price">
 <br>Photo Link: <input type="text" name="photolink">
 <br>Calendar Link: <input type="text" name="calendarlink">
 <br>Description: <input type="text" name="description">
+
+<input type = "submit" value = "Submit">
 
 </form>
 </body>
