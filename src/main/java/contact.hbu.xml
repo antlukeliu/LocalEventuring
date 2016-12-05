@@ -3,13 +3,13 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class name="com.malabanan.LocalEventuring.Contact" table="contact">
-	<id name="contactid" column="contactid" type="int">
+<class name="com.malabanan.localeventuring.Contact" table="contact">
+	<id name="contactId" column="ContactId" type="int">
 		<generator class="increment"></generator>
 	</id>
-	<property name="name" column="name" type="string"></property>
-	<property name="email" column="email" type="string"></property>
-	<property name="address" column="address" type="string"></property>
+	<property name="name" column="Name" type="string"></property>
+	<property name="email" column="Email" type="string"></property>
+	<property name="address" column="Address" type="string"></property>
 	
 </class>
 </hibernate-mapping>

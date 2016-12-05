@@ -25,14 +25,13 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		
-		Venue venue = new Venue();
+		Contact contact = new Contact();
 		
-		venue.setVenueName("Test");
-		venue.setPrice(20);
-		venue.setDescription("Testing for");
-		venue.setContactId(2);
+		contact.setName("Frank");
+		contact.setAddress("Test");
+		contact.setEmail("email");
 		
-		DAOVenue.addVenue(venue);
+		DAOContact.addContact(contact);
 		
 		return "home";
 	}
