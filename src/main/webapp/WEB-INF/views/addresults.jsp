@@ -14,7 +14,7 @@ ${roomsize }<br>
 ${capacity }<br>
 ${price }<br>
 ${photolink }<br>
-${calendarlink }<br>
+${calendar }<br>
 ${description }<br> 
 </body>
 </html>
