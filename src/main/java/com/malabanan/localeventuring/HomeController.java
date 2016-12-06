@@ -27,42 +27,32 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 
-		Venue venue = new Venue();
-
-		venue.setContactId(222);
-		venue.setVenueName("GC");
-		venue.setRoomSize(3242);
-		venue.setCapacity(3);
-		venue.setPrice(342);
-		venue.setPhotoLink("43");
-		venue.setCalendarLink("dfadf");
-		venue.setDescription("4ksdjf;a");
-
-		DAOVenue.addVenue(venue);
-
 		return "home";
 	}
 
 	@RequestMapping(value = "/addform", method = RequestMethod.GET)
 	public String addform(Model model, HttpServletRequest request) {
+		
+		String str1 = request.getParameter("calendarlink");
+		String calLink = RandomMethods.gettingCalendar(str1);
 
 		model.addAttribute("venuename", request.getParameter("venuename"));
 		model.addAttribute("roomsize", request.getParameter("roomsize"));
 		model.addAttribute("capacity", request.getParameter("capacity"));
 		model.addAttribute("price", request.getParameter("price"));
 		model.addAttribute("photolink", request.getParameter("photolink"));
-		model.addAttribute("calendar", request.getParameter("calendarlink"));
+		model.addAttribute("calendar", calLink);
 		model.addAttribute("description", request.getParameter("description"));
 
 		Venue venue = new Venue();
 
-		// venue.setContactId(222);
+		venue.setContactId(24);
 		venue.setVenueName(request.getParameter("venuename"));
 		venue.setRoomSize(Integer.parseInt(request.getParameter("roomsize")));
 		venue.setCapacity(Integer.parseInt(request.getParameter("capacity")));
 		venue.setPrice(Integer.parseInt(request.getParameter("price")));
 		venue.setPhotoLink(request.getParameter("photolink"));
-		venue.setCalendarLink(request.getParameter("calendarlink"));
+		venue.setCalendarLink(calLink);
 		venue.setDescription(request.getParameter("description"));
 
 		DAOVenue.addVenue(venue);
