@@ -1,8 +1,6 @@
 package com.malabanan.localeventuring;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,7 +25,38 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 
+		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/accountpage", method = RequestMethod.GET)
+	public String accountpage(Model model, HttpServletRequest request) {
+		
+		model.addAttribute("email", request.getParameter("email"));
+		model.addAttribute("name", request.getParameter("name"));
+		
+		return "accountpage";
+	}
+	
+	@RequestMapping(value = "/results", method = RequestMethod.GET)
+	public String home(Model model, HttpServletRequest request) {
+		
+		ArrayList<String> listofstr = new ArrayList<String>();
+		for(int i=0; i < 21; i++){
+			listofstr.add("this is a test");
+		}
+		
+		
+		model.addAttribute("test", listofstr);
+		
+		return "results";
 	}
 
 	@RequestMapping(value = "/addform", method = RequestMethod.GET)

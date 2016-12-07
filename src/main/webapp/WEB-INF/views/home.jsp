@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	LocalEventuring!  
 </h1>
 
-<P>   </P>
+<P><a href="login">Sign in</a>  </P>
 </body>
 </html>
