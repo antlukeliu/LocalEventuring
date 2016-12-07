@@ -14,6 +14,19 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
+			<dependency>
+    <groupId>com.cloudinary</groupId>
+    <artifactId>cloudinary-http44</artifactId>
+    <version>1.5.0</version>
+</dependency>
+
+		
+	<dependency>
+    <groupId>com.cloudinary</groupId>
+    <artifactId>cloudinary-taglib</artifactId>
+    <version>1.5.0</version>
+</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
