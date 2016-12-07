@@ -13,7 +13,7 @@ ${venuename }<br>
 ${roomsize }<br>
 ${capacity }<br>
 ${price }<br>
-${photolink }<br>
+<img src = "${image }"><br>
 ${calendar }<br>
 ${description }<br> 
 </body>
