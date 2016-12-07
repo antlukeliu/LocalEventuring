@@ -154,6 +154,6 @@ String photo = request.getParameter("image");
 			e.printStackTrace();
 		}
 		
-		return "home";
+		return "uploadphoto";
 }
 }
