@@ -36,13 +36,22 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/accountpage", method = RequestMethod.GET)
+	@RequestMapping(value = "/accountpage", method = RequestMethod.POST)
 	public String accountpage(Model model, HttpServletRequest request) {
 		
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("name", request.getParameter("name"));
 		
 		return "accountpage";
+	}
+	
+	@RequestMapping(value = "/accountpage2", method = RequestMethod.GET)
+	public String accountpage2(Model model, HttpServletRequest request) {
+		
+		model.addAttribute("email", request.getParameter("email"));
+		model.addAttribute("name", request.getParameter("name"));
+		
+		return "accountpage2";
 	}
 	
 	@RequestMapping(value = "/results", method = RequestMethod.GET)
