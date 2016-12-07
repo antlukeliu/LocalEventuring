@@ -46,7 +46,7 @@ public class HomeController {
 
 		Venue venue = new Venue();
 
-		venue.setContactId(24);
+		venue.setContactId(26);
 		venue.setVenueName(request.getParameter("venuename"));
 		venue.setRoomSize(Integer.parseInt(request.getParameter("roomsize")));
 		venue.setCapacity(Integer.parseInt(request.getParameter("capacity")));
