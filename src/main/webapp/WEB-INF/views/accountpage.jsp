@@ -8,7 +8,7 @@
 </head>
 <body>
 
-Hi {name}!
+Hi ${name}!
 
 <a href="resources/addform.html">Add New Venue</a>
 
