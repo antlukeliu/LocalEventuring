@@ -83,9 +83,10 @@ public class HomeController {
 			calLink = RandomMethods.gettingCalendar(str1);
 		}
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-				  "cloud_name", "localeventuring",
-				  "api_key", "159929721183649",
-				  "api_secret", "8RDgtenZPzOQURwBaVPwlPVb9PM"));
+				  "cloud_name", PhotoUpload.getCloudName(),
+				  "api_key", PhotoUpload.getApiKey(),
+				  "api_secret", PhotoUpload.getApiSecret()));
+		
 		
 		String photo = request.getParameter("image");
 	
