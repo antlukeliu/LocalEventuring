@@ -62,13 +62,20 @@ public class HomeController {
 	public String home(Model model, HttpServletRequest request) {
 
 		List<Venue> venues = new ArrayList<Venue>();
-		
-		if (request.getParameter("price") != null || request.getParameter("capcity") != null) {
-			String[] filters = { request.getParameter("price"), request.getParameter("people") };
-			String queryString = SearchAlg.getQueryString(filters);
-			venues = DAOVenue.getVenues(queryString);
 
+		String price = "";
+		if (request.getParameter("price") != null) {
+			price = request.getParameter("price");
 		}
+		String capacity = "";
+		if (request.getParameter("people") != null) {
+			capacity = request.getParameter("people");
+		}
+
+		String[] filters = { price, capacity };
+		String queryString = SearchAlg.getQueryString(filters);
+		venues = DAOVenue.getVenues(queryString);
+
 		ArrayList<String> listofstr = new ArrayList<String>();
 		for (int i = 0; i < 21; i++) {
 			listofstr.add("this is a test");

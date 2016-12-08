@@ -23,33 +23,25 @@
 
 <fieldset id="group2">
 <br>
-<p>Capcity</p>
+<p>Capacity</p>
 <input type="radio" name="people" value="">
-<br><input type="radio" name="people" value=" (capcity <= 15 ) "> 0 - 15 people
-<br><input type="radio" name="people" value=" (capcity <= 30 and capcity > 15 ) "> 16 - 30 people
-<br><input type="radio" name="people" value=" (capcity <= 45 and capcity > 30 ) "> 31 - 45 people
-<br><input type="radio" name="people" value=" (capcity <= 60 and capcity > 45 ) "> 46 - 60 people
-<br><input type="radio" name="people" value=" (capcity >= 60 ) ">  60+ people
+<br><input type="radio" name="people" value=" (capacity <= 15 ) "> 0 - 15 people
+<br><input type="radio" name="people" value=" (capacity <= 30 and capacity > 15 ) "> 16 - 30 people
+<br><input type="radio" name="people" value=" (capacity <= 45 and capacity > 30 ) "> 31 - 45 people
+<br><input type="radio" name="people" value=" (capacity <= 60 and capacity > 45 ) "> 46 - 60 people
+<br><input type="radio" name="people" value=" (capacity >= 60 ) ">  60+ people
 </fieldset>
 
 <input type="submit" value="submit">
 
 </form>
 
-<c:forEach items= "${test}" var="String">
+<p>String: ${string}</p>
 
-<p>${String}<p>
+<c:forEach items="${venueList }" var="venue">
+
+<p>${venue.venueName}</p>
 </c:forEach>
-<!-- <c:forEach items="${venueList }" var="venue">
-	<tr>
-		<td>${venue.id }</td>
-		<td>${venue.size }</td>
-		<td><a href="<c:url value='/viewVenue?rank=${venue.id}' />">${venue.name }</a></td>
-		<td>${venue. }: ${venue. }</td>
-		<td>${venue. }</td>
-		
-	</tr>
-</c:forEach> -->
 
 
 <a href="accountpage2">My Account</a>
