@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SearchAlg {
 
 	public static String getQueryString(String[] filters){
-		String queryString = "FROM Book";
+		String queryString = "FROM Venue";
 		ArrayList<String> filtered = new ArrayList<String>();
 		
 		

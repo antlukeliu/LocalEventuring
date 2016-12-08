@@ -63,7 +63,7 @@ public class HomeController {
 
 		List<Venue> venues = new ArrayList<Venue>();
 		
-		if (request.getParameter("price") != null) {
+		if (request.getParameter("price") != null || request.getParameter("capcity") != null) {
 			String[] filters = { request.getParameter("price"), request.getParameter("people") };
 			String queryString = SearchAlg.getQueryString(filters);
 			venues = DAOVenue.getVenues(queryString);
