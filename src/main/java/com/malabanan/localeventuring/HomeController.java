@@ -2,6 +2,7 @@ package com.malabanan.localeventuring;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +63,10 @@ public class HomeController {
 	@RequestMapping(value = "/results", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		
+		String[] filters = {request.getParameter("price"), request.getParameter("people")};
+		String queryString = SearchAlg.getQueryString(filters);
+		List<Venue> venues = DAOVenue.getVenues(queryString);
+		
 		ArrayList<String> listofstr = new ArrayList<String>();
 		for(int i=0; i < 21; i++){
 			listofstr.add("this is a test");
@@ -69,6 +74,7 @@ public class HomeController {
 		
 		
 		model.addAttribute("test", listofstr);
+		model.addAttribute("venueList", venues);
 		
 		return "results";
 	}

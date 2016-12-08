@@ -10,7 +10,27 @@
 </head>
 <body>
 <h1>Search Results</h1>
+<form name="form1" action="results" method="post"> 
+<fieldset id="group1">
+<p>Price</p>
+<br><input type="radio" name="price" value=" (price < 50) "> $0 - $49.99
+<br><input type="radio" name="price" value=" (price < 100 and price >= 50) "> $50 - $99.99
+<br><input type="radio" name="price" value=" (price < 150 and price >= 100 ) ">  $100 - $149.99
+<br><input type="radio" name="price" value=" (price < 200 and price >= 150 ) ">  $150 - $199.99
+<br><input type="radio" name="price" value=" (price > 199.99 ) ">  $200+
+</fieldset>
 
+<fieldset id="group2">
+<br>
+<p>Capcity</p>
+<br><input type="radio" name="people" value=" (capcity <= 15 ) "> 0 - 15 people
+<br><input type="radio" name="people" value=" (capcity <= 30 and capcity > 15 ) "> 16 - 30 people
+<br><input type="radio" name="people" value=" (capcity <= 45 and capcity > 30 ) "> 31 - 45 people
+<br><input type="radio" name="people" value=" (capcity <= 60 and capcity > 45 ) "> 46 - 60 people
+<br><input type="radio" name="people" value=" (capcity >= 60 ) ">  60+ people
+</fieldset>
+
+</form>
 
 <c:forEach items= "${test}" var="String">
 
