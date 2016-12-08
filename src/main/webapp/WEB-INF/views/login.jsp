@@ -15,13 +15,16 @@
 <form name="login" method="POST" action="accountpage">
 <input type="hidden" name="email">
 <input type="hidden" name="name">
+<input type="hidden" name="id">
 <input type="submit" value="continue">
 </form>
 <script>
 function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
+      var id_token = googleUser.getAuthResponse().id_token;
       document.getElementsByName("email")[0].value=profile.getEmail();
       document.getElementsByName("name")[0].value=profile.getName();
+      document.getElementsByName("id")[0].value=id_token;
     }
     
 </script>

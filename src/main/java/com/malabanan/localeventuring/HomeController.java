@@ -14,8 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
+//import com.cloudinary.Cloudinary;
+//import com.cloudinary.utils.ObjectUtils;
 
 /**
  * Handles requests for the application home page.
@@ -46,6 +46,13 @@ public class HomeController {
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("name", request.getParameter("name"));
 
+		if (request.getParameter("id") == null) {
+			return "login";
+		} else {
+			String token = request.getParameter("id");
+			GoogleSignIn.setTokenId(token);
+		}
+
 		return "accountpage";
 	}
 
@@ -54,6 +61,13 @@ public class HomeController {
 
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("name", request.getParameter("name"));
+
+		if (request.getParameter("id") == null) {
+			return "login";
+		} else {
+			String token = request.getParameter("id");
+			GoogleSignIn.setTokenId(token);
+		}
 
 		return "accountpage2";
 	}
@@ -96,7 +110,7 @@ public class HomeController {
 		if (str1.startsWith("<")) {
 			calLink = RandomMethods.gettingCalendar(str1);
 		}
-		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
+/*		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
 				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
 
 		String photo = request.getParameter("image");
@@ -137,7 +151,7 @@ public class HomeController {
 		venue.setDescription(request.getParameter("description"));
 
 		DAOVenue.addVenue(venue);
-
+*/
 		return "addresults";
 	}
 
