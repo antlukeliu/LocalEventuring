@@ -16,6 +16,17 @@
 
 <p>${String}<p>
 </c:forEach>
+<!-- <c:forEach items="${venueList }" var="venue">
+	<tr>
+		<td>${venue.id }</td>
+		<td>${venue.size }</td>
+		<td><a href="<c:url value='/viewVenue?rank=${venue.id}' />">${venue.name }</a></td>
+		<td>${venue. }: ${venue. }</td>
+		<td>${venue. }</td>
+		
+	</tr>
+</c:forEach> -->
+
 
 <a href="accountpage2">My Account</a>
 
