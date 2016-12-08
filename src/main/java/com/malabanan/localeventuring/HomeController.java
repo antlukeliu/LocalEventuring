@@ -79,7 +79,7 @@ public class HomeController {
 		String str1 = request.getParameter("calendarlink");
 		String calLink = "";
 		
-		if (calLink.startsWith("<")) {
+		if (str1.startsWith("<")) {
 			calLink = RandomMethods.gettingCalendar(str1);
 		}
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
