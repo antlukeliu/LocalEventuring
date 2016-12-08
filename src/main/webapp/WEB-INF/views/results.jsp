@@ -30,6 +30,8 @@
 <br><input type="radio" name="people" value=" (capcity >= 60 ) ">  60+ people
 </fieldset>
 
+<input type="submit" value="submit">
+
 </form>
 
 <c:forEach items= "${test}" var="String">
