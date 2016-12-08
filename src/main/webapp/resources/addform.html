@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+
+input:absolute; 
+
+
+</style>
 <meta charset="ISO-8859-1">
 <title>Add Form</title>
 </head>
@@ -9,6 +15,9 @@
 <h1>Add Form</h1>
 <form name="addform" action="../addform" method="get">
 
+<fieldset>
+	
+	<legend><b>Please enter required information</b></legend>
 Company Name: <input type="text" name="venuename">
 <br>Room Size (sq. ft): <input type="text" name="roomsize">
 <br>Capacity (# of people): <input type="text" name="capacity">
@@ -20,8 +29,9 @@ Directions for getting new google calendar link.
 <br>Description: <input type="text" name="description" size="500">
 
 <input type = "submit" value = "Submit">
+<input type="reset" name="Reset" value ="Clear Form">
+</fieldset>
 </form>
-
 
 
 </body>
