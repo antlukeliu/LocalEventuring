@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -83,7 +84,7 @@ public class HomeController {
 		}
 		String capacity = "";
 		if (request.getParameter("people") != null) {
-			capacity = request.getParameter("people"); 
+			capacity = request.getParameter("people");
 		}
 
 		String[] filters = { price, capacity };
@@ -177,6 +178,54 @@ public class HomeController {
 		DAOContact.addContact(contact);
 
 		return "contactsummary";
+	}
+
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String viewBook(@RequestParam("venueId") int venueId, Model model) {
+
+		List<Venue> venues = DAOVenue.getVenues("From Venue");
+
+		if (venueId < 1) {
+			return "results";
+		}
+
+		int rankNum = venueId;
+		String venueName = "";
+		int roomSize = 0;
+		int capacity = 0;
+		int price = 0;
+		String photoLink = "";
+		String calendarLink = "";
+		String description = "";
+
+		for (Venue v : venues) {
+			if (v.getVenueId() == venueId) {
+				rankNum = venueId;
+				venueName = v.getVenueName();
+				roomSize = v.getRoomSize();
+				capacity = v.getCapacity();
+				price = v.getPrice();
+				photoLink = v.getPhotoLink();
+				calendarLink = v.getCalendarLink();
+				description = v.getDescription();
+				break;
+			}
+		}
+		
+		if(venueName.equals("")){
+			return "home";
+		}
+
+		model.addAttribute("rank", rankNum);
+		model.addAttribute("venuename", venueName);
+		model.addAttribute("roomsize", roomSize);
+		model.addAttribute("capacity", capacity);
+		model.addAttribute("price", price);
+		model.addAttribute("photolink", photoLink);
+		model.addAttribute("calendarlink", calendarLink);
+		model.addAttribute("description", description);
+
+		return "profile";
 	}
 
 	// @RequestMapping(value = "/uploadphoto", method = RequestMethod.GET)

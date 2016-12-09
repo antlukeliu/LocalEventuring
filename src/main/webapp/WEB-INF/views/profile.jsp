@@ -1,8 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Profile</title>
 <link rel="stylesheet" href="resources/style.css"> 
 </head>
 <body>
@@ -32,17 +34,21 @@
 				</form>
  -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Home</a></li>
-					<li><a href="accountpage2">My Account</a></li>
+					<li><a href="/localeventuring/">Home</a></li>
+					<li><a href="/localeventuring/accountpage2">My Account</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-<h1>
-	LocalEventuring!  
-</h1>
+${venuename }<br>
+${roomsize }<br>
+${capacity }<br>
+${price }<br>
+<img src = "${image }"><br>
+${calendar }<br>
+${description }<br> 
+</body>
 
-<P><a href="login">Sign in</a>  </P>
 </body>
 </html>

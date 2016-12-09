@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Results</title>
+
+<link rel="stylesheet" href="resources/style.css"> 
 </head>
 <body>
 <h1>Search Results</h1>
@@ -40,7 +42,7 @@
 
 <c:forEach items="${venueList }" var="venue">
 
-<p>${venue.venueName}</p>
+<h2><a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a></h2>
 </c:forEach>
 
 
