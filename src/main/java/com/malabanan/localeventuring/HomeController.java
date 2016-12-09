@@ -58,7 +58,7 @@ public class HomeController {
 		return "accountpage";
 	}
 
-	@RequestMapping(value = "/accountpage2", method = RequestMethod.GET)
+	@RequestMapping(value = "/accountpage", method = RequestMethod.GET)
 	public String accountpage2(Model model, HttpServletRequest request) {
 
 		model.addAttribute("email", request.getParameter("email"));
@@ -71,7 +71,7 @@ public class HomeController {
 			GoogleSignIn.setTokenId(token);
 		}
 
-		return "accountpage2";
+		return "accountpage";
 	}
 
 	@RequestMapping(value = "/results", method = RequestMethod.GET)

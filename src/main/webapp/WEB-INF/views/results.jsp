@@ -46,7 +46,7 @@
 </c:forEach>
 
 
-<a href="accountpage2">My Account</a>
+<a href="accountpage">My Account</a>
 
 </body>
 </html>
