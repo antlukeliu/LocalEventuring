@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -103,11 +104,14 @@ public class HomeController {
 		return "results";
 	}
 
-	@RequestMapping(value = "/addform", method = RequestMethod.GET)
-	public String addform(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/addform", method = RequestMethod.POST)
+	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 
 		String str1 = request.getParameter("calendarlink");
 		String calLink = "";
+		
+		String urlPic = "";
+		System.out.println("upload: " + file.getOriginalFilename());
 
 		if (str1.startsWith("<")) {
 			calLink = RandomMethods.gettingCalendar(str1);
@@ -115,26 +119,24 @@ public class HomeController {
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
 				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
 
-		String photo = request.getParameter("image");
 
 		Venue venue = new Venue();
-
+		
 		try {
-
-			Map result = cloudinary.uploader().upload(photo, ObjectUtils.emptyMap());
-
-			String publicId = (String) result.get("url");
-
-			logger.info(publicId);
-
-			model.addAttribute("image", publicId);
-
-			venue.setPhotoLink(publicId);
-
+			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+			urlPic = (String) uploadResult.get("url");
+			// hmodel.setPictureurl(urlPic);
+			model.addAttribute("image", urlPic);
+			
+			venue.setPhotoLink(urlPic);
+			System.out.println(urlPic);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+		
 		}
+
 
 		model.addAttribute("venuename", request.getParameter("venuename"));
 		model.addAttribute("roomsize", request.getParameter("roomsize"));
