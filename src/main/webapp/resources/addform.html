@@ -2,7 +2,17 @@
 <html>
 <head>
 <style>
-input:absolute;
+input
+
+
+
+
+:absolute
+
+
+
+
+;
 </style>
 <meta charset="ISO-8859-1">
 <title>Add Form</title>
@@ -43,7 +53,8 @@ input:absolute;
 	</nav>
 	<!--/.main-header-->
 	<div class="container">
-		<form name="addform" action="../addform" method="get" class="form-horizontal">
+		<form name="addform" action="../addform" method="get"
+			class="form-horizontal">
 			<fieldset>
 				<legend>Enter the Required Information</legend>
 				<div class="form-group">
@@ -55,37 +66,38 @@ input:absolute;
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-lg-2 control-label">Room Size</label>
+					<label class="col-lg-2 control-label">Room Size:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="roomsize"
 							placeholder="In SQ. FT">
 					</div>
-					<label class="col-lg-2 control-label">Capacity</label>
-					<div class="col-lg-3">
+					<label class="col-lg-2 control-label">Capacity:</label>
+					<div class="col-lg-4">
 						<input type="text" class="form-control" name="capacity"
 							placeholder="# Of People">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="col-lg-2 control-label">Price</label>
-					<div class="col-lg-3">
+					<label class="col-lg-2 control-label">Price:</label>
+					<div class="col-lg-4">
 						<input type="text" class="form-control" name="price"
 							placeholder="$ per hour">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<a href=""></a> 
-					<label class="col-lg-2 control-label">Image URL:</label>
+					<a href=""></a> <label class="col-lg-2 control-label">Image
+						URL:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="image"
 							placeholder="Image URL">
 					</div>
 				</div>
-
+				<label class="col-lg-2 control-label"></label>
+				<a href="" class="col-lg-10">Directions on getting Google Calendar iframe</a> <br>
 				<div class="form-group">
-					<a href="">Directions on getting Google Calendar iframe</a> 
+					
 					<label class="col-lg-2 control-label">Calendar Link:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="calendarlink"
@@ -95,18 +107,57 @@ input:absolute;
 
 
 				<div class="form-group">
-					<label for="textArea" class="col-lg-2 control-label">Description</label>
+					<label for="textArea" class="col-lg-2 control-label">Description:</label>
 					<div class="col-lg-10">
-						<textarea class="form-control" rows="5" id="textArea" name ="description"></textarea>
-						<span class="help-block">Add additional information about your venue.</span>
+						<textarea class="form-control" rows="5" id="textArea"
+							name="description"></textarea>
+						<span class="help-block">Add additional information about
+							your venue.</span>
 					</div>
 				</div>
+				<legend>Contact Information</legend>
+
+				<div class="form-group">
+					<label for="email" class="col-lg-2 control-label">E-Mail:</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" name="email"
+							placeholder="LocalEventuring@gmail.com">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="Streetaddress" class="col-lg-2 control-label">Street Address:</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" name="street"
+							placeholder="1570 Woodward Ave">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">City:</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" name="city"
+							placeholder="Detroit">
+					</div>
+					<label class="col-lg-1 control-label">State:</label>
+					<div class="col-lg-1">
+						<input type="text" class="form-control" name="state"
+							placeholder="MI">
+					</div>
+
+					<label class="col-lg-1 control-label">Zip Code:</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control" name="zipcode"
+							placeholder="48211">
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div class="col-lg-10 col-lg-offset-2">
 						<button type="reset" class="btn btn-default">Clear Form</button>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
+
 			</fieldset>
 		</form>
 
