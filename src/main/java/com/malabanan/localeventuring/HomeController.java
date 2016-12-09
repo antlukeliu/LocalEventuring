@@ -83,7 +83,7 @@ public class HomeController {
 		}
 		String capacity = "";
 		if (request.getParameter("people") != null) {
-			capacity = request.getParameter("people");
+			capacity = request.getParameter("people"); 
 		}
 
 		String[] filters = { price, capacity };
