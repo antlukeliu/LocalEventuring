@@ -46,8 +46,9 @@ public class HomeController {
 
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("name", request.getParameter("name"));
+		model.addAttribute("id", request.getParameter("id"));
 
-		if (request.getParameter("id") == null) {
+		if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
 			String token = request.getParameter("id");
@@ -63,7 +64,7 @@ public class HomeController {
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("name", request.getParameter("name"));
 
-		if (request.getParameter("id") == null) {
+		if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
 			String token = request.getParameter("id");
