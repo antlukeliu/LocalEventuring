@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(Model model, HttpServletRequest request) {
+		
+		HttpSession sessionClear = request.getSession(true);
+		sessionClear.invalidate();
 
 		return "login";
 	}
@@ -53,7 +57,8 @@ public class HomeController {
 			return "login";
 		} else {
 			String token = request.getParameter("id");
-			GoogleSignIn.setTokenId(token);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("name", token);
 		}
 
 		return "accountpage";
@@ -62,16 +67,23 @@ public class HomeController {
 	@RequestMapping(value = "/accountpage", method = RequestMethod.GET)
 	public String accountpage2(Model model, HttpServletRequest request) {
 
-		model.addAttribute("email", request.getParameter("email"));
-		model.addAttribute("name", request.getParameter("name"));
+		HttpSession session = request.getSession(false);
+		String name = (String) session.getAttribute("name");
+		
+		if (name == null){
+			return "login";
+		}
 
-		if (request.getParameter("id").equals("")) {
+		/*if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
 			String token = request.getParameter("id");
 			GoogleSignIn.setTokenId(token);
-		}
-
+		}*/
+		
+		model.addAttribute("email", request.getParameter("email"));
+		model.addAttribute("name", request.getParameter("name"));
+		
 		return "accountpage";
 	}
 
@@ -107,6 +119,13 @@ public class HomeController {
 	@RequestMapping(value = "/addform", method = RequestMethod.POST)
 	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 
+		HttpSession session = request.getSession(false);
+		String name = (String) session.getAttribute("name");
+		
+		if (name == null){
+			return "login";
+		}
+		
 		String str1 = request.getParameter("calendarlink");
 		String calLink = "";
 		
@@ -184,8 +203,15 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String viewBook(@RequestParam("venueId") int venueId, Model model) {
+	public String viewBook(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
 
+		HttpSession session = request.getSession(false);
+		String name = (String) session.getAttribute("name");
+		
+		if (name == null){
+			return "login";
+		}
+		
 		List<Venue> venues = DAOVenue.getVenues("From Venue");
 
 		if (venueId < 1) {

@@ -50,5 +50,8 @@
 <h3><a href="results">Checkout Some Spaces</a></h3>
 
 <footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+<form name="cook" method="GET" action="login">
+<input type="submit" value="logout">
+</form>
 </body>
 </html>
