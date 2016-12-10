@@ -93,12 +93,6 @@ public class HomeController {
 		String queryString = SearchAlg.getQueryString(filters);
 		venues = DAOVenue.getVenues(queryString);
 
-		ArrayList<String> listofstr = new ArrayList<String>();
-		for (int i = 0; i < 21; i++) {
-			listofstr.add("this is a test");
-		}
-
-		model.addAttribute("test", listofstr);
 		model.addAttribute("venueList", venues);
 
 		return "results";
