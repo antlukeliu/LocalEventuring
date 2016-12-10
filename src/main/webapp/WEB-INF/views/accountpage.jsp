@@ -48,5 +48,7 @@
 <a href="resources/addform.html">Add New Venue</a>
 
 <h3><a href="results">Checkout Some Spaces</a></h3>
+
+<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 </html>

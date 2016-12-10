@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Local Eventure Developement Team</title>
 <link rel="stylesheet" href="resources/style.css"> 
 </head>
 <body>
-
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -35,34 +35,13 @@
  -->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="">Home</a></li>
-					<li><a href="accountpage">My Account</a></li>
+					<li><a href="accountpage2">My Account</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="443097452223-brgf9pqihosda3gtc1bmd0f3aj4muh2h.apps.googleusercontent.com">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<form name="login" method="POST" action="accountpage">
-<input type="hidden" name="email">
-<input type="hidden" name="name">
-<input type="hidden" name="id">
-<input type="submit" value="continue">
-</form>
-<script>
-function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      var id_token = googleUser.getAuthResponse().id_token;
-      document.getElementsByName("email")[0].value=profile.getEmail();
-      document.getElementsByName("name")[0].value=profile.getName();
-      document.getElementsByName("id")[0].value=id_token;
-    }
-    
-</script>
-
-<h3>Disclosure: AdBlock needs to be off in order to have access to accounts</h3>
 <div class="footer">Local Eventuring <a href="aboutus" >Developers</a></div>
 </body>
 </html>

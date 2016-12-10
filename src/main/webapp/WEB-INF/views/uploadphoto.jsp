@@ -40,8 +40,13 @@
 			</div>
 		</div>
 	</nav>
+
+
 <h1>Please upload a photo of your space here: </h1>
-</body>
+
 <img src = "${image}">
+<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+</body>
+
 
 </html>

@@ -48,5 +48,7 @@
 
 <a href="accountpage">My Account</a>
 
+<p></p>
+<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 </html>

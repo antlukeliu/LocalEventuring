@@ -44,5 +44,7 @@
 </h1>
 
 <P><a href="login">Sign in</a>  </P>
+
+<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 </html>

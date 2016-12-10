@@ -231,6 +231,12 @@ public class HomeController {
 		return "profile";
 	}
 
+	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
+	public String aboutUs(){
+		
+		return "aboutus";
+	}
+	
 	// @RequestMapping(value = "/uploadphoto", method = RequestMethod.GET)
 	// public String uploadPhoto(Model model, HttpServletRequest request) {
 	//

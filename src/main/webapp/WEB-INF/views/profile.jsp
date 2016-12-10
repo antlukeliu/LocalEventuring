@@ -48,7 +48,7 @@ ${price }<br>
 <img src = "${image }"><br>
 ${calendar }<br>
 ${description }<br> 
-</body>
 
+<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 </html>
