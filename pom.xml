@@ -38,7 +38,7 @@
  			<groupId>com.cloudinary</groupId>
  			<artifactId>cloudinary-taglib</artifactId>
  			<version>1.5.0</version>
- 		</dependency>
+ 		</dependency >
     		<!-- Spring -->
  		<dependency>
  			<groupId>org.springframework</groupId>

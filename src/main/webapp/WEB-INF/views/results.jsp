@@ -44,7 +44,7 @@
 	</div>
 
 	<h1 id="resultsh1">Search Results</h1>
-	<div class="left">
+	<div class="left clearfix">
 	<h3>Categories</h3>
 		<form name="form1" action="results" method="GET" class="form-control">
 			<fieldset id="group1">
@@ -79,7 +79,7 @@
 
 		</form>
 	</div>
-	<div class="container">
+	<div class="container clearfix">
 
 		<c:forEach items="${venueList }" var="venue">
 
