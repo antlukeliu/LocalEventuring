@@ -50,9 +50,10 @@ public class HomeController {
 	public String accountpage(Model model, HttpServletRequest request) {
 
 		model.addAttribute("email", request.getParameter("email"));
-		model.addAttribute("name", request.getParameter("name"));
+		model.addAttribute("fullname", request.getParameter("fullname"));
 		model.addAttribute("id", request.getParameter("id"));
 
+		
 		if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
@@ -60,7 +61,7 @@ public class HomeController {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("name", token);
 		}
-
+		
 		return "accountpage";
 	}
 
@@ -69,7 +70,6 @@ public class HomeController {
 
 		HttpSession session = request.getSession(false);
 		String name = (String) session.getAttribute("name");
-		
 		if (name == null){
 			return "login";
 		}
@@ -80,9 +80,11 @@ public class HomeController {
 			String token = request.getParameter("id");
 			GoogleSignIn.setTokenId(token);
 		}*/
-		
+		int contactId = 1;
+		List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 		model.addAttribute("email", request.getParameter("email"));
-		model.addAttribute("name", request.getParameter("name"));
+		model.addAttribute("fullname", request.getParameter("fullname"));
+		model.addAttribute("venuesOwned", venues);
 		
 		return "accountpage";
 	}
@@ -144,17 +146,14 @@ public class HomeController {
 			venue.setPhotoLink(urlPic);
 			System.out.println(urlPic);
 		} catch (IOException e) {
-			
 			e.printStackTrace();
-			
-		
 		}
-
 
 		model.addAttribute("venuename", request.getParameter("venuename"));
 		model.addAttribute("roomsize", request.getParameter("roomsize"));
 		model.addAttribute("capacity", request.getParameter("capacity"));
 		model.addAttribute("price", request.getParameter("price"));
+		model.addAttribute("category", request.getParameter("category"));
 		model.addAttribute("calendar", calLink);
 		model.addAttribute("description", request.getParameter("description"));
 
@@ -163,7 +162,7 @@ public class HomeController {
 		venue.setRoomSize(Integer.parseInt(request.getParameter("roomsize")));
 		venue.setCapacity(Integer.parseInt(request.getParameter("capacity")));
 		venue.setPrice(Integer.parseInt(request.getParameter("price")));
-
+		venue.setCategory(request.getParameter("category"));
 		venue.setCalendarLink(calLink);
 		venue.setDescription(request.getParameter("description"));
 

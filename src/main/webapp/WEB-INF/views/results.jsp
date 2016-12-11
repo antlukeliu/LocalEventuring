@@ -36,9 +36,10 @@
 				</form>
  -->
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="">Home</a></li>
-				<li><a href="accountpage">My Account</a></li>
-			</ul>
+					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
+					<li><a href="results">Spaces</a></li>
+					<li><a href="accountpage">My Account</a></li>
+					<li><a href="login">Login/Logout</a></li>							</ul>
 		</div>
 	</div>
 	</div>
@@ -54,7 +55,7 @@
 				<input type="radio" name="price" value=""> 
 				<br> 
 				
-				<input	type="radio" name="price" value="1"> $0 -$49.99 
+				<input	type="radio" name="price" value="1" onClick="results"> $0 -$49.99 
 				<br> <input type="radio" name="price" value="2"> $50 - $99.99 <br>
 				<input type="radio" name="price" value="3"> $100 - $149.99 <br>
 				<input type="radio" name="price" value="4"> $150 - $199.99 <br>

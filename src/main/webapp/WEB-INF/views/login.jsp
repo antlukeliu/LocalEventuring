@@ -34,7 +34,7 @@
 				</form>
  -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Home</a></li>
+					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Spaces</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>				</ul>
@@ -48,7 +48,7 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <form name="login" method="POST" action="accountpage">
 <input type="hidden" name="email">
-<input type="hidden" name="name">
+<input type="hidden" name="fullname">
 <input type="hidden" name="id">
 <input type="submit" value="continue">
 </form>
@@ -57,7 +57,7 @@ function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       var id_token = googleUser.getAuthResponse().id_token;
       document.getElementsByName("email")[0].value=profile.getEmail();
-      document.getElementsByName("name")[0].value=profile.getName();
+      document.getElementsByName("fullname")[0].value=profile.getName();
       document.getElementsByName("id")[0].value=id_token;
     }
     

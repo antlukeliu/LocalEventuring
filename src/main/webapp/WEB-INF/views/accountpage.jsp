@@ -35,7 +35,7 @@
 				</form>
  -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Home</a></li>
+					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Spaces</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>
@@ -45,13 +45,23 @@
 	</nav>
 
 <h1>Account Page</h1>
-<h2>Hi <c:out value="${name}"/>!</h2>
+<h2>Hi <c:out value="${fullname}"/>!</h2>
 
 <a href="resources/addform.html">Add New Venue</a>
 
-<h3><a href="results">Checkout Some Spaces</a></h3>
+	<h2>My Venues</h2>
+	<div class="container clearfix" id="body">
+		<p>${num}</p>
+		<c:forEach items="${venuesOwned }" var="venue">
+			<div class="col-lg-11" id="results">
+			<h2>
+				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
+			</h2>
+			</div>
+		</c:forEach>
+		</div>
 
-<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+<div class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></div>
 <form name="cook" method="GET" action="login">
 <input type="submit" value="logout">
 </form>

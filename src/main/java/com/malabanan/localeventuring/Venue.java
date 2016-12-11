@@ -7,7 +7,8 @@ public class Venue {
 	 private String venueName;
 	 private int roomSize; 
 	 private int capacity; 
-	 private int price; 
+	 private int price;
+	 private String category;
 	 private String photoLink; 
 	 private String calendarLink; 
 	 private String description;
@@ -98,6 +99,14 @@ public class Venue {
 	 */
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	/**

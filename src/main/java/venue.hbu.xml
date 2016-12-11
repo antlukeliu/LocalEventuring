@@ -12,6 +12,7 @@
 	<property name="roomSize" column="RoomSize" type="int"></property>
 	<property name="capacity" column="Capacity" type="int"></property>
 	<property name="price" column="Price" type="int"></property>
+	<property name="category" column="Category" type="string"></property>
 	<property name="photoLink" column="PhotoLink" type="string"></property>
 	<property name="calendarLink" column="CalendarLink" type="string"></property>
 	<property name="description" column="Description" type="string"></property>
