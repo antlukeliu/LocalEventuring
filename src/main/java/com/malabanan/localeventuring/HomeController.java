@@ -57,9 +57,9 @@ public class HomeController {
 		if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
-			String token = request.getParameter("id");
+			String email = request.getParameter("email");
 			HttpSession session = request.getSession(true);
-			session.setAttribute("name", token);
+			session.setAttribute("name", email);
 		}
 		
 		return "accountpage";

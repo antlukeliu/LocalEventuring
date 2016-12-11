@@ -1,5 +1,7 @@
 package com.malabanan.localeventuring;
 
+import javax.servlet.http.HttpSession;
+
 public class RandomMethods {
 	
 	public static String gettingCalendar(String str1) {
