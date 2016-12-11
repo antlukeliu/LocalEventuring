@@ -68,7 +68,7 @@ public class HomeController {
 	@RequestMapping(value = "/accountpage", method = RequestMethod.GET)
 	public String accountpage2(Model model, HttpServletRequest request) {
 
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(true);
 		String name = (String) session.getAttribute("name");
 		if (name == null){
 			return "login";
@@ -115,7 +115,7 @@ public class HomeController {
 	@RequestMapping(value = "/addform", method = RequestMethod.POST)
 	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(true);
 		String name = (String) session.getAttribute("name");
 		
 		if (name == null){
@@ -198,7 +198,7 @@ public class HomeController {
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String viewBook(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
 
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(true);
 		String name = (String) session.getAttribute("name");
 		
 		if (name == null){
