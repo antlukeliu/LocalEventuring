@@ -57,10 +57,17 @@ public class HomeController {
 		if (request.getParameter("id").equals("")) {
 			return "login";
 		} else {
-			String token = request.getParameter("id");
+			String email = request.getParameter("email");
 			HttpSession session = request.getSession(true);
-			session.setAttribute("name", token);
+			session.setAttribute("name", email);
 		}
+		
+		int contactId = 26;
+		List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+		model.addAttribute("email", request.getParameter("email"));
+		model.addAttribute("fullname", request.getParameter("fullname"));
+		model.addAttribute("venuesOwned", venues);
+		
 		
 		return "accountpage";
 	}
@@ -80,7 +87,7 @@ public class HomeController {
 			String token = request.getParameter("id");
 			GoogleSignIn.setTokenId(token);
 		}*/
-		int contactId = 1;
+		int contactId = 26;
 		List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
@@ -196,7 +203,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String viewBook(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
+	public String viewProfile(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession(true);
 		String name = (String) session.getAttribute("name");
@@ -208,6 +215,8 @@ public class HomeController {
 		List<Venue> venues = DAOVenue.getVenues("From Venue");
 
 		if (venueId < 1) {
+			
+			model.addAttribute("venueList", venues);
 			return "results";
 		}
 
@@ -238,15 +247,8 @@ public class HomeController {
 			return "home";
 		}
 
-		model.addAttribute("rank", rankNum);
-		model.addAttribute("venuename", venueName);
-		model.addAttribute("roomsize", roomSize);
-		model.addAttribute("capacity", capacity);
-		model.addAttribute("price", price);
-		model.addAttribute("photolink", photoLink);
-		model.addAttribute("calendarlink", calendarLink);
-		model.addAttribute("description", description);
-
+		modelAdding(model,rankNum,venueName,roomSize,capacity, 
+				price, photoLink, calendarLink, description);
 		return "profile";
 	}
 
@@ -254,6 +256,147 @@ public class HomeController {
 	public String aboutUs(){
 		
 		return "aboutus";
+	}
+	
+	@RequestMapping(value = "/updateinfo", method = RequestMethod.GET)
+	public String viewupdate(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request){
+		
+		HttpSession session = request.getSession(true);
+		String name = (String) session.getAttribute("name");
+		String email = (String) session.getAttribute("email");
+		//String email
+		
+		List<Venue> venues = DAOVenue.getVenues("From Venue");
+		
+/*		if (name == null || email == null){
+			return "login";
+		}*/
+		
+		if (venueId < 1) {
+			model.addAttribute("venueList", venues);
+			return "results";
+		}
+		
+		// get the contactId of this specific venue
+		// compare email if email is not that in the session than return them to a you don't have access page
+		//else continue
+		
+		int rankNum = venueId;
+		String venueName = "";
+		int contactId = 0;
+		int roomSize = 0;
+		int capacity = 0;
+		int price = 0;
+		String category = "";
+		String photoLink = "";
+		String calendarLink = "";
+		String description = "";
+
+		for (Venue v : venues) {
+			if (v.getVenueId() == venueId) {
+				rankNum = venueId;
+				contactId = v.getContactId();
+				venueName = v.getVenueName();
+				roomSize = v.getRoomSize();
+				capacity = v.getCapacity();
+				price = v.getPrice();
+				category = v.getCategory();
+				photoLink = v.getPhotoLink();
+				calendarLink = v.getCalendarLink();
+				description = v.getDescription();
+				break;
+			}
+		}
+		
+		if(venueName.equals("")){
+			return "home";
+		}
+		
+/*		List<Contact> contacts = DAOContact.getContacts("From Contact where contactId =" +contactId);		
+
+		for(Contact c: contacts){
+			if(c.getEmail().equals(email)){
+				continue;
+			}else {
+				return "accessdenied";
+		}
+		}
+		*/
+		
+		modelAdding(model,rankNum,venueName,roomSize,capacity, 
+				price, category, photoLink, calendarLink, description);
+		
+		return "updateinfo";
+	}
+	
+	
+	@RequestMapping(value = "/ViewUpdate", method = RequestMethod.GET)
+	public String ViewUpdate( Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession(true);
+		String name = (String) session.getAttribute("name");
+		
+		if (name == null){
+			return "login";
+		}
+		
+		List<Venue> venues = DAOVenue.getVenues("From Venue");
+
+		if (venueId < 1) {
+			
+			model.addAttribute("venueList", venues);
+			return "results";
+		}
+
+		int rankNum = venueId;
+		String venueName = "";
+		int roomSize = 0;
+		int capacity = 0;
+		int price = 0;
+		String category = "";
+		String photoLink = "";
+		String calendarLink = "";
+		String description = "";
+
+		for (Venue v : venues) {
+			if (v.getVenueId() == venueId) {
+				rankNum = venueId;
+				venueName = v.getVenueName();
+				roomSize = v.getRoomSize();
+				capacity = v.getCapacity();
+				price = v.getPrice();
+				category = v.getCategory();
+				photoLink = v.getPhotoLink();
+				calendarLink = v.getCalendarLink();
+				description = v.getDescription();
+				break;
+			}
+		}
+		
+		if(venueName.equals("")){
+			return "home";
+		}
+
+		modelAdding(model,rankNum,venueName,roomSize,capacity, 
+				price, category, photoLink, calendarLink, description);
+		
+		return "ViewUpdate";
+	}
+	
+	private static void modelAdding(Model model, int rankNum, String venueName, 
+			int roomSize, int capacity, int price, String category, 
+			String photoLink, String calendarLink, String description){
+		
+		model.addAttribute("venueid", rankNum);
+		model.addAttribute("venuename", venueName);
+		model.addAttribute("roomsize", roomSize);
+		model.addAttribute("capacity", capacity);
+		model.addAttribute("price", price);
+		model.addAttribute("category", category);
+		model.addAttribute("photolink", photoLink);
+		model.addAttribute("calendarlink", calendarLink);
+		model.addAttribute("description", description);
+
 	}
 	
 	// @RequestMapping(value = "/uploadphoto", method = RequestMethod.GET)

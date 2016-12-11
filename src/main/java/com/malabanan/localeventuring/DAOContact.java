@@ -39,7 +39,7 @@ public class DAOContact {
 		return i;
 	}
 	
-	public static List<Contact> getContact(String str) {
+	public static List<Contact> getContacts(String str) {
 		if (factory == null)
 			setupFactory();
 		Session hibernateSession = factory.openSession();

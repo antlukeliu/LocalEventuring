@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Information</title>
-
+<link rel="stylesheet" href="resources/style.css">
 <script>
 	function myFunction() {
 		document.getElementById("myP").contentEditable = true;
@@ -48,31 +48,38 @@
 	</div>
 	</nav>
 	<h1>
-		<c:out value="{venue.venueId}" />
+		<c:out value="${venueId}" />
 	</h1>
 	<div class="container">
-		<form name="updateform" action="../updateform" method="post"
+		<form name="updateform" action="ViewUpdate" method="post"
 			class="form-horizontal">
 			<fieldset>
-				<legend>Enter the Required Information</legend>
+				<legend>All Fields Must Have Inputs Information</legend>
 				<div class="form-group">
+					<label class="col-lg-2 control-label"></label> <p
+					class="col-lg-10">${venuename}</p>
+				<br>
 					<label for="venueName" class="col-lg-2 control-label">Venue
 						Name:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="venuename"
-							placeholder="Venue Name">
+							placeholder="${venuename}">
 					</div>
 				</div>
+				<label class="col-lg-2 control-label"></label>
+				<p class="col-lg-4"> ${roomsize}</p>
 				<div class="form-group">
 					<label class="col-lg-2 control-label">Room Size:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="roomsize"
-							placeholder="In SQ. FT">
+							placeholder="${roomsize}">
 					</div>
+				<label class="col-lg-2 control-label"></label>
+				<p class="col-lg-4"> ${capacity}</p>
 					<label class="col-lg-2 control-label">Capacity:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="capacity"
-							placeholder="# Of People">
+							placeholder="${capacity}">
 					</div>
 				</div>
 
@@ -80,7 +87,7 @@
 					<label class="col-lg-2 control-label">Price:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="price"
-							placeholder="$ per hour">
+							placeholder="{price}">
 					</div>
 				</div>
 

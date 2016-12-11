@@ -55,7 +55,7 @@
 		<c:forEach items="${venuesOwned }" var="venue">
 			<div class="col-lg-11" id="results">
 			<h2>
-				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
+				<a href="<c:url value='/updateinfo?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
 			</div>
 		</c:forEach>

@@ -81,7 +81,7 @@
 
 		</form>
 	</div>
-	<div class="container clearfix" id="body">
+	<div class="containerresults clearfix" id="body">
 		<p>${num}</p>
 		<c:forEach items="${venueList }" var="venue">
 			<div class="col-lg-11" id="results">
