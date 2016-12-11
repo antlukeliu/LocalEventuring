@@ -42,8 +42,9 @@
 		</div>
 	</div>
 	</div>
-
-	<h1 id="resultsh1">Search Results</h1>
+<div id="results">
+	<h1>Search Results</h1>
+</div>	
 	<div class="left clearfix">
 	<h3>Categories</h3>
 		<form name="form1" action="results" method="GET" class="form-control">
@@ -53,46 +54,46 @@
 				<input type="radio" name="price" value=""> 
 				<br> 
 				
-				<input	type="radio" name="price" value=" (price < 50) "> $0 -$49.99 
-				<br> <input type="radio" name="price" value=" (price < 100 and price >= 50) "> $50 - $99.99 <br>
-				<input type="radio" name="price" value=" (price < 150 and price >= 100 ) "> $100 - $149.99 <br>
-				<input type="radio" name="price" value=" (price < 200 and price >= 150 ) "> $150 - $199.99 <br>
-				<input type="radio" name="price" value=" (price > 199.99 ) ">$200+
+				<input	type="radio" name="price" value="1"> $0 -$49.99 
+				<br> <input type="radio" name="price" value="2"> $50 - $99.99 <br>
+				<input type="radio" name="price" value="3"> $100 - $149.99 <br>
+				<input type="radio" name="price" value="4"> $150 - $199.99 <br>
+				<input type="radio" name="price" value="5">$200+
 			</fieldset>
 
 			<fieldset id="group2">
 				<br>
 				<p>Capacity</p>
 				<input type="radio" name="people" value=""> <br> <input
-					type="radio" name="people" value=" (capacity <= 15 ) "> 0 -
+					type="radio" name="people" value="6"> 0 -
 				15 people <br> <input type="radio" name="people"
-					value=" (capacity <= 30 and capacity > 15 ) "> 16 - 30
+					value="7"> 16 - 30
 				people <br> <input type="radio" name="people"
-					value=" (capacity <= 45 and capacity > 30 ) "> 31 - 45
+					value="8"> 31 - 45
 				people <br> <input type="radio" name="people"
-					value=" (capacity <= 60 and capacity > 45 ) "> 46 - 60
+					value="9"> 46 - 60
 				people <br> <input type="radio" name="people"
-					value=" (capacity >= 60 ) "> 60+ people
+					value="10"> 60+ people
 			</fieldset>
 			<br>
 			<input type="submit" value="Search">
 
 		</form>
 	</div>
-	<div class="container clearfix">
-
+	<div class="container clearfix" id="body">
+		<p>${num}</p>
 		<c:forEach items="${venueList }" var="venue">
-
+			<div class="col-lg-11" id="results">
 			<h2>
 				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
+				<p >Price:$${venue.price} per hour</p>
+				<p>Capacity: ${venue.capacity} people</p>
 			<hr>
+			</div>
 		</c:forEach>
-	</div>
+	
 
-	<p></p>
-	<div class="footerresults">
-		Local Eventuring <a href="aboutus">Developers</a>
 	</div>
 </body>
 </html>

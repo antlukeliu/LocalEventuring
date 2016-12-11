@@ -24,7 +24,28 @@ html {
 }
 
 body {
-	margin: 0
+	margin: 0;
+	height: 100%;
+}
+
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+   background:#ff0;
+   padding:10px;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   
+   text-align: center;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -585,10 +606,17 @@ a.bg-danger:hover, a.bg-danger:focus {
 	border-bottom: 1px solid #f8f5f0
 }
 
-#resultsh1 {
+#results h1{
 	text-align: center;
 }
 
+#results h2{
+	text-align: left;
+}
+
+#results p{
+	text-align:right;
+}
 ul, ol {
 	margin-top: 0;
 	margin-bottom: 10px
@@ -638,6 +666,7 @@ dd {
 	padding: 10px;
 }
 
+
 .footer {
 	position: absolute;
 	right: 0;
@@ -646,9 +675,10 @@ dd {
 	padding: 1rem;
 	background-color: #efefef;
 	text-align: center;
+	height: 60px;
 }
 
-.footerresults {
+.footerprofile {
 	position: relative;
 	right: 0;
 	bottom: 0;
@@ -656,6 +686,7 @@ dd {
 	padding: 1rem;
 	background-color: #efefef;
 	text-align: center;
+	height: 60px;
 }
 
 .footer-a {
@@ -801,7 +832,9 @@ pre code {
 	margin-right: auto;
 	margin-left: 200px;
 	padding-left: 15px;
-	padding-right: 15px
+	padding-right: 15px;
+	min-height: 100%;
+	
 }
 
 @media ( min-width :768px) {

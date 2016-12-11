@@ -100,8 +100,8 @@ public class HomeController {
 		if (request.getParameter("people") != null) {
 			capacity = request.getParameter("people");
 		}
-
-		String[] filters = { price, capacity };
+		
+		String[] filters = { price,  capacity};
 		String queryString = SearchAlg.getQueryString(filters);
 		venues = DAOVenue.getVenues(queryString);
 
@@ -144,7 +144,7 @@ public class HomeController {
 			venue.setPhotoLink(urlPic);
 			System.out.println(urlPic);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			
 		

@@ -35,8 +35,9 @@
  -->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="">Home</a></li>
+					<li><a href="results">Spaces</a></li>
 					<li><a href="accountpage">My Account</a></li>
-				</ul>
+					<li><a href="login">Login/Logout</a></li>				</ul>
 			</div>
 		</div>
 	</nav>
@@ -45,10 +46,12 @@ ${venuename }<br>
 ${roomsize }<br>
 ${capacity }<br>
 ${price }<br>
-<img src = "${image }"><br>
-${calendar }<br>
+<img src = "${photolink }"><br>
+
+
+${calendarlink }<br>
 ${description }<br> 
 
-<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+<div class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></div>
 </body>
 </html>
