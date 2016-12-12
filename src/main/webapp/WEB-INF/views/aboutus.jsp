@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Local Eventure Developement Team</title>
 <link rel="stylesheet" href="resources/style.css"> 
+
+<style>
+
+h3{
+	position: inline-block; 
+}
+
+
+
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -45,6 +55,22 @@
 <h1><u>Meet Our Team of Developers</u></h1>
 
 
-<div class="footer">Local Eventuring <a href="aboutus" >Developers</a></div>
+<h3><u>Milliza Malabanan</u></h3>
+<br>
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:285px;height:228px;">
+
+<h3><u>Frank Daidone</u></h3>
+<br>
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:285px;height:228px;">
+
+<h3><u>Anthony Liu</u></h3>
+<br>
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:285px;height:228px;">
+
+<h3><u>Daniel Christiansen</u></h3>
+<br>
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:285px;height:228px;">
+
+<div class="footerprofile">Local Eventuring <a href="accountpage" >Back to My Account</a></div>
 </body>
 </html>
