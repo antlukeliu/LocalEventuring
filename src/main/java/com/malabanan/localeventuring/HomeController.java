@@ -19,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.liu.hibernate1.Book;
+import com.liu.hibernate1.DAO;
 
 /**
  * Handles requests for the application home page.
@@ -431,6 +433,26 @@ public class HomeController {
 		return "viewupdate";
 	}
 	
+	@RequestMapping(value = "/deletevenue", method = RequestMethod.GET)
+	public String deleteBook(@RequestParam("rank") int rank,Model model, HttpServletRequest request){
+		HttpSession session = request.getSession(true);
+		String email = (String) session.getAttribute("name");
+		
+		if (email == null){
+			return "login";
+		}
+		
+		
+		
+		DAOVenue.deleteVenue(rank);
+		List<Venue> venues = DAOVenue.getVenues("FROM Venue");
+		
+		
+		model.addAttribute("bookList", venues);
+
+		return "list";
+	}
+	
 	//Methods to shorten amount of code used
 	
 	private static void modelAdding(Model model, int rankNum, String venueName, 
@@ -456,7 +478,7 @@ public class HomeController {
 	private static int findingContactId(String email){
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		int contactId = 0;
-	
+		
 		for(Contact c: contacts){
 			if (c.getEmail().equals(email)){
 				contactId = c.getContactId();

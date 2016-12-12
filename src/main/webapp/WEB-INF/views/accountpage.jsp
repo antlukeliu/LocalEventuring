@@ -54,38 +54,30 @@
 	<a href="resources/addform.html">Add New Venue</a>
 
 	<h2>My Venues</h2>
-	<div class="container clearfix">
-		<table border="1">
-			<tr>
-				<th class="col-lg-8">MyVenue</th>
-				<th class="col-lg-2">Update</th>
-				<th class="col-lg-2">Delete</th>
-			</tr>
-
-
+	<div class="clearfix">
+	<div class="form-group">
 			<c:forEach items="${venuesOwned }" var="venue">
 
-				<tr id="results">
 
-					<td class="col-lg-8">
+					<div class="col-lg-8">
 						<h3>
 							<a href="<c:url value='/updateinfo?venueId=${venue.venueId}' />">${venue.venueName}</a>
 						</h3>
-					</td>
-					<td class="col-lg-2">
+					</div>
+					<div class="col-lg-2">
 						<form action="updateinfo?venueId=${venue.venueId}" method="post">
 							<button type="submit" class="btn btn-primary">Update</button>
 						</form>
-					</td>
-					<td class="col-lg-2">
-						<form action="deletevenue?venueId=${venue.venueId}" method="post">
-							<button type="submit" class="btn btn-primary">Delete</button>
+					</div>
+					<div class="col-lg-2">
+						<form action="deletevenue?venueId=${venue.venueId}" method="post"
+						onSubmit="return confirm('Are you sure you want to delete this venue?)">
+							<button type="submit" class="btn btn-default">Delete</button>
 						</form>
-					</td>
-				</tr>
-
+					</div>
+					<hr>
 			</c:forEach>
-		</table>
+	</div>
 	</div>
 
 	<div class="footerprofile">

@@ -2,12 +2,13 @@ package com.malabanan.localeventuring;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
 
 public class DAOVenue {
 
@@ -61,4 +62,23 @@ public class DAOVenue {
 		hibernateSession.getTransaction().commit();
 		hibernateSession.close();
 	}
+	
+	public static void deleteVenue(Integer v) {
+		if (factory == null)
+			setupFactory();
+	     Session session = factory.openSession();
+	      Transaction tx = null;
+	      try{
+	         tx = session.beginTransaction();
+	         Venue str = 
+	                   (Venue)session.get(Venue.class, v); 
+	         session.delete(str); 
+	         tx.commit();
+	      }catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	         session.close(); 
+	      }
+	   }
 }

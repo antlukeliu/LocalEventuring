@@ -90,7 +90,7 @@
 				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
 				<h4>Category: ${venue.category}</h4>
-				<h4>Price: $${venue.price} per hour</h4>
+				<h4>Price:$${venue.price} per hour</h4>
 				<h4>Capacity: ${venue.capacity} people</h4>
 			<hr>
 			</div>
