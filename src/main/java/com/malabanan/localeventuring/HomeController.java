@@ -288,7 +288,7 @@ public class HomeController {
 		return "aboutus";
 	}
 	
-	@RequestMapping(value = "/updateinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateinfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewupdate(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request){
 		
 		HttpSession session = request.getSession(true);
@@ -365,7 +365,7 @@ public class HomeController {
 	@RequestMapping(value = "/ViewUpdate", method = RequestMethod.GET)
 	public String ViewUpdate(Model model, HttpServletRequest request) {
 		
-		
+		//Fix this method
 		HttpSession session = request.getSession(true);
 		String email = (String) session.getAttribute("name");
 		
@@ -402,6 +402,8 @@ public class HomeController {
 				break;
 			}
 		}
+		Venue venue = new Venue();
+		DAOVenue.updateVenue(venue);
 		
 		if(venueName.equals("")){
 			return "home";
@@ -438,7 +440,7 @@ public class HomeController {
 	}
 	
 	private static int findingContactId(String email){
-		List<Contact> contacts = DAOContact.getContacts("From Contacts");
+		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		int contactId = 0;
 	
 		for(Contact c: contacts){

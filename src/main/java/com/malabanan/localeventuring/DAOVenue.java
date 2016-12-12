@@ -50,4 +50,15 @@ public class DAOVenue {
 		hibernateSession.close();
 		return venues;
 	}
+	
+	public static void updateVenue(Venue v) {
+		if (factory == null)
+			setupFactory();
+		Session hibernateSession = factory.openSession();
+		hibernateSession.getTransaction().begin();
+		// save this specific record
+		hibernateSession.update(v);
+		hibernateSession.getTransaction().commit();
+		hibernateSession.close();
+	}
 }
