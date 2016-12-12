@@ -66,10 +66,21 @@ public class HomeController {
 		//Fix this 
 		String email = (String) session.getAttribute("name");
 		int contactId = findingContactId(email);
-		List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+		
+		if(contactId == 0){
+			model.addAttribute("error", "please sign in and hit continue");
+		}
+		
+		List<Contact> contacts = DAOContact.getContacts("From Contact");
+		for(Contact c: contacts){
+			if(c.getEmail().equals(email));
+			contactId = c.getContactId();
+			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+			model.addAttribute("venuesOwned", venues);
+		}
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
-		model.addAttribute("venuesOwned", venues);
+		
 		
 		
 		return "accountpage";
@@ -79,8 +90,8 @@ public class HomeController {
 	public String accountpage2(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession(true);
-		String name = (String) session.getAttribute("name");
-		if (name == null){
+		String email = (String) session.getAttribute("name");
+		if (email == null){
 			return "login";
 		}
 
@@ -92,11 +103,22 @@ public class HomeController {
 		}*/
 		
 		//refactor the shit out of this too
-		int contactId = findingContactId(name);
-		List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+		int contactId = findingContactId(email);
+		
+		
+		if(contactId == 0){
+			model.addAttribute("error", "please sign in and hit continue");
+		}
+		
+		List<Contact> contacts = DAOContact.getContacts("From Contact");
+		for(Contact c: contacts){
+			if(c.getEmail().equals(email));
+			contactId = c.getContactId();
+			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+			model.addAttribute("venuesOwned", venues);
+		}
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
-		model.addAttribute("venuesOwned", venues);
 		
 		return "accountpage";
 	}

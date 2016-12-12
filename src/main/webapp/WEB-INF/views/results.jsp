@@ -37,7 +37,7 @@
  -->
 			<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-					<li><a href="results">Spaces</a></li>
+					<li><a href="results">Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>							</ul>
 		</div>
@@ -81,15 +81,17 @@
 
 		</form>
 	</div>
-	<div class="containerresults clearfix" id="body">
+	<div class="containerresults clearfix">
 		<p>${num}</p>
 		<c:forEach items="${venueList }" var="venue">
 			<div class="col-lg-11" id="results">
 			<h2>
+				<img src="${venue.photoLink}" class="thumbnail" height="100px" width="200px">
 				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
-				<p >Price:$${venue.price} per hour</p>
-				<p>Capacity: ${venue.capacity} people</p>
+				<h4>Category: ${venue.category}</h4>
+				<h4>Price:$${venue.price} per hour</h4>
+				<h4>Capacity: ${venue.capacity} people</h4>
 			<hr>
 			</div>
 		</c:forEach>

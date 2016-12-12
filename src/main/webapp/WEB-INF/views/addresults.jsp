@@ -35,7 +35,7 @@
  -->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="">Home</a></li>
-					<li><a href="results">Spaces</a></li>
+					<li><a href="results">Event Spaces</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>				</ul>
 			</div>

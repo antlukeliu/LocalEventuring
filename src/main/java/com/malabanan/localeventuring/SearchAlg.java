@@ -35,10 +35,8 @@ public class SearchAlg {
 				queryString += filtered.get(0);
 			}else{
 				queryString = queryString + " and " + filtered.get(i);
-			}
-			
-		}
-		
+			}	
+		}	
 		return queryString;
 	}
 	
@@ -55,6 +53,11 @@ public class SearchAlg {
 		map.put("8", " (capacity <= 45 and capacity > 30 ) ");
 		map.put("9", " (capacity <= 60 and capacity > 45 ) ");
 		map.put("10", " (capacity >= 60 ) ");
+		map.put("11", "");
+		map.put("12", "");
+		map.put("13", "");
+		map.put("14", "");
+		map.put("15", "");
 		return map;
 	}
 }

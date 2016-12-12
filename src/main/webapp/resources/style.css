@@ -582,10 +582,12 @@ a.bg-danger:hover, a.bg-danger:focus {
 
 #results h2{
 	text-align: left;
+	display: inline;
 }
 
-#results p{
-	text-align:right;
+#results h4{
+	display: inline;
+	text-align:center;
 }
 ul, ol {
 	margin-top: 0;
@@ -814,6 +816,10 @@ pre code {
 	padding-right: 15px;
 	min-height: 100%;
 	
+}
+
+.inline{
+	display: inline-block;
 }
 
 @media ( min-width :768px) {
