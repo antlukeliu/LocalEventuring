@@ -61,6 +61,8 @@
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="venuename"
 							value="${venuename}">
+						<input type="hidden" name="venueId"
+							value="${venueid}">	
 					</div>
 				</div>
 				<div class="form-group">

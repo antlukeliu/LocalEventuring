@@ -184,6 +184,7 @@ public class HomeController {
 		
 		//Using Cloudinary to store an image
 		
+		
 		String urlPic = "";
 		System.out.println("upload: " + file.getOriginalFilename());
 
@@ -210,7 +211,7 @@ public class HomeController {
 				address, city, state, zipcode);
 		
 		venue = settingVenue(contactId,venuename,roomsize,
-				capacity, price, category, calLink, description, 
+				capacity, price, category, urlPic, calLink, description, 
 				address, city, state, zipcode);
 		
 		DAOVenue.addVenue(venue);
@@ -301,10 +302,6 @@ public class HomeController {
 			return "results";
 		}
 		
-		// get the contactId of this specific venue
-		// compare email if email is not that in the session than return them to a you don't have access page
-		//else continue
-		
 		int rankNum = venueId;
 		int contactId = 0;
 		String venueName = "";
@@ -358,7 +355,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/ViewUpdate", method = RequestMethod.GET)
-	public String ViewUpdate(Model model, HttpServletRequest request) {
+	public String ViewUpdate(Model model, HttpServletRequest request,  @RequestParam("file") MultipartFile file) {
 		
 		//Fix this method
 		HttpSession session = request.getSession(true);
@@ -372,35 +369,53 @@ public class HomeController {
 		
 		//Make sure I get the integer in update form
 		int venueId = Integer.parseInt(request.getParameter("numId"));
+		String venuename = request.getParameter("venuename");
+		int roomsize = Integer.parseInt(request.getParameter("roomsize"));
+		int capacity = Integer.parseInt(request.getParameter("capacity"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		String category = request.getParameter("category");
+		String str1 = request.getParameter("calendarlink");
+		String calLink = "";
+		String description = request.getParameter("description");
+		String fullname = request.getParameter("fullname");
+		String loginemail = request.getParameter("email");
+		String address = request.getParameter("street");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String zipcode = request.getParameter("zipcode");
 		
-		int rankNum = venueId;
-		String venueName = "";
-		int roomSize = 0;
-		int capacity = 0;
-		int price = 0;
-		String category = "";
-		String photoLink = "";
-		String calendarLink = "";
-		String description = "";
+		
+		
+		String urlPic = "";
+		System.out.println("upload: " + file.getOriginalFilename());
 
-		for (Venue v : venues) {
-			if (v.getVenueId() == venueId) {
-				rankNum = venueId;
-				venueName = v.getVenueName();
-				roomSize = v.getRoomSize();
-				capacity = v.getCapacity();
-				price = v.getPrice();
-				category = v.getCategory();
-				photoLink = v.getPhotoLink();
-				calendarLink = v.getCalendarLink();
-				description = v.getDescription();
-				break;
-			}
-		}
+		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
+				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
+
 		Venue venue = new Venue();
+		
+		try {
+			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+			urlPic = (String) uploadResult.get("url");
+			
+			System.out.println(urlPic);
+			model.addAttribute("image", urlPic);
+			
+			venue.setPhotoLink(urlPic);
+			System.out.println(urlPic);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		venue = settingVenue(contactId,venuename,roomsize,
+				capacity, price, category, urlPic, calLink, description, 
+				address, city, state, zipcode);
+		
 		DAOVenue.updateVenue(venue);
 		
-		if(venueName.equals("")){
+		
+		
+		if(venuename.equals("")){
 			return "home";
 		}
 
@@ -448,7 +463,7 @@ public class HomeController {
 	}
 
 	private static Venue settingVenue(int contactId, String venueName, int roomSize,
-			int capacity, int price, String category, 
+			int capacity, int price, String category, String urlPic,
 			String calLink, String description, String address, String city,
 			String state, String zipcode){
 		
@@ -459,7 +474,7 @@ public class HomeController {
 		venue.setCapacity(capacity);
 		venue.setPrice(price);
 		venue.setCategory(category);
-		
+		venue.setPhotoLink(urlPic);
 		venue.setCalendarLink(calLink);
 		venue.setDescription(description);
 		venue.setStreet(address);
