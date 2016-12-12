@@ -50,7 +50,7 @@
 <input type="hidden" name="email">
 <input type="hidden" name="fullname">
 <input type="hidden" name="id">
-<input type="submit" value="continue">
+<button type="submit" class="btn btn-primary">Continue</button>
 </form>
 <script>
 function onSignIn(googleUser) {

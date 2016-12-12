@@ -77,7 +77,7 @@
 					value="10"> 60+ people
 			</fieldset>
 			<br>
-			<input type="submit" value="Search">
+			<button type="submit" class="btn btn-primary">Search</button>
 
 		</form>
 	</div>

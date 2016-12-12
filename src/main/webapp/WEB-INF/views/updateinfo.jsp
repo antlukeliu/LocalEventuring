@@ -48,7 +48,7 @@
 	</div>
 	</nav>
 	<h1>
-		<c:out value="${venueId}" />
+		#<c:out value="${venueId}" />
 	</h1>
 	<div class="container">
 		<form name="updateform" action="ViewUpdate" method="post"
@@ -56,38 +56,42 @@
 			<fieldset>
 				<legend>All Fields Must Have Inputs Information</legend>
 				<div class="form-group">
-					<label class="col-lg-2 control-label"></label> <p
-					class="col-lg-10">${venuename}</p>
-				<br>
 					<label for="venueName" class="col-lg-2 control-label">Venue
 						Name:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="venuename"
-							placeholder="${venuename}">
+							value="${venuename}">
 					</div>
 				</div>
-				<label class="col-lg-2 control-label"></label>
-				<p class="col-lg-4"> ${roomsize}</p>
 				<div class="form-group">
 					<label class="col-lg-2 control-label">Room Size:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="roomsize"
-							placeholder="${roomsize}">
+							value="${roomsize}">
 					</div>
-				<label class="col-lg-2 control-label"></label>
-				<p class="col-lg-4"> ${capacity}</p>
+
 					<label class="col-lg-2 control-label">Capacity:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="capacity"
-							placeholder="${capacity}">
+							value="${capacity}">
 					</div>
 				</div>
-
+				
 				<div class="form-group">
 					<label class="col-lg-2 control-label">Price:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="price"
-							placeholder="{price}">
+							value="${price}">
+					</div>
+					<label for="select" class="col-lg-2 control-label">Category</label>
+					<div class="col-lg-4">
+						<select id="select" name="category" class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select> <br>
 					</div>
 				</div>
 
@@ -99,6 +103,7 @@
 							placeholder="Upload File">
 					</div>
 				</div>
+				
 				<label class="col-lg-2 control-label"></label> <a href=""
 					class="col-lg-10">Directions on getting Google Calendar iframe</a>
 				<br>
@@ -107,7 +112,7 @@
 					<label class="col-lg-2 control-label">Calendar Link:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="calendarlink"
-							placeholder="Calendar Iframe">
+							value="${calenderlink}">
 					</div>
 				</div>
 
@@ -116,7 +121,7 @@
 					<label for="textArea" class="col-lg-2 control-label">Description:</label>
 					<div class="col-lg-10">
 						<textarea class="form-control" rows="5" id="textArea"
-							name="description"></textarea>
+							name="description" value="${description}"></textarea>
 						<span class="help-block">Add additional information about
 							your venue.</span>
 					</div>
@@ -126,7 +131,7 @@
 				<div class="form-group">
 					<label for="email" class="col-lg-2 control-label">E-Mail:</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" name="email" placeholder="${email}">
+						<input type="text" class="form-control" name="email" value="${email}">
 					</div>
 				</div>
 
@@ -135,25 +140,25 @@
 						Address:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="street"
-							placeholder="${street}">
+							value="${street}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-lg-2 control-label">City:</label>
 					<div class="col-lg-4">
 						<input type="text" class="form-control" name="city"
-							placeholder="${city}">
+							value="${city}">
 					</div>
 					<label class="col-lg-1 control-label">State:</label>
 					<div class="col-lg-1">
 						<input type="text" class="form-control" name="state"
-							placeholder="${city}">
+							value="${state}">
 					</div>
 
 					<label class="col-lg-1 control-label">Zip Code:</label>
 					<div class="col-lg-2">
 						<input type="text" class="form-control" name="zipcode"
-							placeholder="${zipcode}">
+							value="${zipcode}">
 					</div>
 				</div>
 

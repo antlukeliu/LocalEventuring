@@ -16,5 +16,10 @@
 	<property name="photoLink" column="PhotoLink" type="string"></property>
 	<property name="calendarLink" column="CalendarLink" type="string"></property>
 	<property name="description" column="Description" type="string"></property>
+	<property name="street" column="Street" type="string"></property>
+	<property name="city" column="City" type="string"></property>
+	<property name="state" column="State" type="string"></property>
+	<property name="zipcode" column="Zipcode" type="string"></property>
+	
 </class>
 </hibernate-mapping>
