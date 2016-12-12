@@ -352,6 +352,7 @@ public class HomeController {
 			}
 		}
 		
+		model.addAttribute("contactid", contactId);
 		modelAdding(model,rankNum,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
 				street, city, state, zipcode);
@@ -360,7 +361,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/ViewUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/viewupdate", method = RequestMethod.GET)
 	public String ViewUpdate(Model model, HttpServletRequest request,  @RequestParam("file") MultipartFile file) {
 		
 		//Fix this method
@@ -376,6 +377,7 @@ public class HomeController {
 		//Make sure I get the integer in update form
 		int venueId = Integer.parseInt(request.getParameter("numId"));
 		String venuename = request.getParameter("venuename");
+		int contactId = Integer.parseInt(request.getParameter("contactid"));
 		int roomsize = Integer.parseInt(request.getParameter("roomsize"));
 		int capacity = Integer.parseInt(request.getParameter("capacity"));
 		int price = Integer.parseInt(request.getParameter("price"));
@@ -418,9 +420,7 @@ public class HomeController {
 				address, city, state, zipcode);
 		
 		DAOVenue.updateVenue(venue);
-		
-		
-		
+			
 		if(venuename.equals("")){
 			return "home";
 		}
@@ -428,10 +428,8 @@ public class HomeController {
 		//modelAdding(model,rankNum,venueName,roomSize,capacity, 
 		//		price, category, photoLink, calendarLink, description);
 		
-		return "ViewUpdate";
+		return "viewupdate";
 	}
-	
-	
 	
 	//Methods to shorten amount of code used
 	

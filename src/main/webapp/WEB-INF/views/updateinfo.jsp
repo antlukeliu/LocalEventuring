@@ -62,7 +62,9 @@
 						<input type="text" class="form-control" name="venuename"
 							value="${venuename}">
 						<input type="hidden" name="venueId"
-							value="${venueid}">	
+							value="${venueid}">
+						<input type="hidden" name="contactId"
+							value="${contactid}">	
 					</div>
 				</div>
 				<div class="form-group">
