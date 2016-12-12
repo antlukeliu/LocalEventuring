@@ -284,6 +284,12 @@ public class HomeController {
 		return "aboutus";
 	}
 	
+	@RequestMapping(value = "/caldirections", method = RequestMethod.GET)
+	public String caldirections(){
+		
+		return "caldirections";
+	}
+	
 	@RequestMapping(value = "/updateinfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewupdate(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request){
 		
