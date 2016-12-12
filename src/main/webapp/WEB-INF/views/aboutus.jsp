@@ -42,9 +42,7 @@
 		</div>
 	</nav>
 
-<h1>
-
-</h1>
+<h1><u>Meet Our Team of Developers</u></h1>
 
 
 <div class="footer">Local Eventuring <a href="aboutus" >Developers</a></div>

@@ -50,8 +50,8 @@ ${price }<br>
 
 
 ${calendarlink }<br>
-${description }<br> 
+${description }<br>
 
-<div class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></div>
+	<div class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></div>
 </body>
 </html>

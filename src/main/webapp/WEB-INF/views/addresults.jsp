@@ -47,13 +47,14 @@
 
 
 <h1><c:out value="${venuename }"/></h1><br>
-<c:out value="${roomsize }"/><br>
-<c:out value="${capacity }"/><br>
-<c:out value="${price }"/><br>
+<ul>
+<b><li>Room Size (sq ft.):</b> <c:out value="${roomsize }"/><br>
+<b><li>Capacity:</b> <c:out value="${capacity }"/><br>
+<b><li>Price Per Hour: </b> <c:out value="${price }"/><br>
 <img src = "${image }"><br>
 ${calendarlink }<br>
-<c:out value="${description }"/><br> 
-
+<b><li>Venue Description: </b> <c:out value="${description }"/><br> 
+</ul>
 
 </body>
 </html>
