@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="resources/style.css">
 <title>Venue Added!</title>
 </head>
 <h1>Venue Added</h1>
@@ -50,7 +51,7 @@
 <c:out value="${capacity }"/><br>
 <c:out value="${price }"/><br>
 <img src = "${image }"><br>
-${calendar }<br>
+${calendarlink }<br>
 <c:out value="${description }"/><br> 
 
 
