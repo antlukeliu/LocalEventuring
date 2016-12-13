@@ -59,8 +59,10 @@ public class HomeController {
 			return "login";
 		} else {
 			String email = request.getParameter("email");
+			String fullname = request.getParameter("fullname");
 			session = request.getSession(true);
 			session.setAttribute("name", email);
+			session.setAttribute("fullname", fullname);
 		}
 		
 		//Fix this 
@@ -73,10 +75,11 @@ public class HomeController {
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		for(Contact c: contacts){
-			if(c.getEmail().equals(email));
+			if(c.getEmail().equals(email)){
 			contactId = c.getContactId();
 			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 			model.addAttribute("venuesOwned", venues);
+		}
 		}
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
@@ -91,6 +94,7 @@ public class HomeController {
 
 		HttpSession session = request.getSession(true);
 		String email = (String) session.getAttribute("name");
+		String fullname = (String) session.getAttribute("fullname");
 		if (email == null){
 			return "login";
 		}
@@ -105,13 +109,14 @@ public class HomeController {
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		for(Contact c: contacts){
-			if(c.getEmail().equals(email));
+			if(c.getEmail().equals(email)){
 			contactId = c.getContactId();
 			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 			model.addAttribute("venuesOwned", venues);
+			}
 		}
-		model.addAttribute("email", request.getParameter("email"));
-		model.addAttribute("fullname", request.getParameter("fullname"));
+		model.addAttribute("email", email);
+		model.addAttribute("fullname", fullname);
 		
 		return "accountpage";
 	}
@@ -345,13 +350,14 @@ public class HomeController {
 		List<Contact> contacts = DAOContact.getContacts("From Contact where contactId =" +contactId);		
 
 		for(Contact c: contacts){
-			if(c.getEmail().equals(name)){
+			if(c.getEmail().equalsIgnoreCase(name)){
 				continue;
 			}else {
 				return "accessdenied";
 			}
 		}
 		
+		model.addAttribute("email", name);
 		model.addAttribute("contactid", contactId);
 		modelAdding(model,rankNum,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
@@ -431,7 +437,7 @@ public class HomeController {
 		return "viewupdate";
 	}
 	
-	@RequestMapping(value = "/deletevenue", method = RequestMethod.GET)
+	@RequestMapping(value = "/deletevenue", method = RequestMethod.POST)
 	public String deleteBook(@RequestParam("rank") int rank,Model model, HttpServletRequest request){
 		HttpSession session = request.getSession(true);
 		String email = (String) session.getAttribute("name");

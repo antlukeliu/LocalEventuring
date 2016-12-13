@@ -9,9 +9,46 @@
 <title>Update Information</title>
 <link rel="stylesheet" href="resources/style.css">
 <script>
-	function myFunction() {
-		document.getElementById("myP").contentEditable = true;
+	function validateEmail(em) {
+	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(em);
 	}
+
+function validate(){
+	var em = document.forms["addform"]["venuename"].value;
+	var rs = document.forms["addform"]["roomsize"].value;
+	var cp = document.forms["addform"]["capacity"].value;
+	var pr = document.forms["addform"]["price"].value;
+	var fn = document.forms["addform"]["fullname"].value;
+	var em = document.forms["addform"]["email"].value;
+	var ct = document.forms["addform"]["city"].value;
+	var st = document.forms["addform"]["state"].value;
+	var zip = document.forms["addform"]["zipcode"].value;
+	
+	var reg = /^\d+$/;
+	
+	if (fn <= 2){
+		alert("Name is too short");
+		return false;
+	}else if(reg.test(rs) === false){
+		alert("Invalid Room Size Enter Digits Only");
+		return false;
+	}else if(reg.test(cp) === false){
+		alert("Invalid Capacity Enter Digits Only");
+		return false;
+	}else if(reg.test(pr) === false){
+		alert("Invalid Price Enter Digits Only");
+		return false;
+	}else if(validateEmail(em) === false){
+		alert("Enter a email");
+		return false;
+	}else if (/^[0-9]{5}(?:-[0-9]{4})?$/.test(zip) === false ){
+		alert("Invalid Zip Code");
+		return false;
+	else{
+		return true;
+	}
+}
 </script>
 </head>
 <body>
@@ -48,11 +85,11 @@
 	</div>
 	</nav>
 	<h1>
-		#<c:out value="${venueId}" />
+		Venue Number: #<c:out value="${venueid}" />
 	</h1>
 	<div class="container">
 		<form name="updateform" action="ViewUpdate" method="post"
-			class="form-horizontal">
+			class="form-horizontal" onSubmit="return validate()">
 			<fieldset>
 				<legend>All Fields Must Have Inputs Information</legend>
 				<div class="form-group">
@@ -90,11 +127,11 @@
 					<label for="select" class="col-lg-2 control-label">Category</label>
 					<div class="col-lg-4">
 						<select id="select" name="category" class="form-control">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<option value="meetings">Meetings</option>
+							<option value="meetups">Meetups</option>
+							<option value="tradeshow">Trade Show</option>
+							<option value="partiesallages">Parties All Ages</option>
+							<option value="parties21+">Parties 21+</option>
 						</select> <br>
 					</div>
 				</div>
@@ -116,7 +153,7 @@
 					<label class="col-lg-2 control-label">Calendar Link:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="calendarlink"
-							value="${calenderlink}">
+							value="${calenderLink}">
 					</div>
 				</div>
 
@@ -154,10 +191,62 @@
 							value="${city}">
 					</div>
 					<label class="col-lg-1 control-label">State:</label>
-					<div class="col-lg-1">
-						<input type="text" class="form-control" name="state"
-							value="${state}">
+				<div class="col-lg-2">
+						<select class="form-control" name="state">
+							<option value="AL">Alabama</option>
+							<option value="AK">Alaska</option>
+							<option value="AZ">Arizona</option>
+							<option value="AR">Arkansas</option>
+							<option value="CA">California</option>
+							<option value="CO">Colorado</option>
+							<option value="CT">Connecticut</option>
+							<option value="DE">Delaware</option>
+							<option value="DC">District Of Columbia</option>
+							<option value="FL">Florida</option>
+							<option value="GA">Georgia</option>
+							<option value="HI">Hawaii</option>
+							<option value="ID">Idaho</option>
+							<option value="IL">Illinois</option>
+							<option value="IN">Indiana</option>
+							<option value="IA">Iowa</option>
+							<option value="KS">Kansas</option>
+							<option value="KY">Kentucky</option>
+							<option value="LA">Louisiana</option>
+							<option value="ME">Maine</option>
+							<option value="MD">Maryland</option>
+							<option value="MA">Massachusetts</option>
+							<option value="MI">Michigan</option>
+							<option value="MN">Minnesota</option>
+							<option value="MS">Mississippi</option>
+							<option value="MO">Missouri</option>
+							<option value="MT">Montana</option>
+							<option value="NE">Nebraska</option>
+							<option value="NV">Nevada</option>
+							<option value="NH">New Hampshire</option>
+							<option value="NJ">New Jersey</option>
+							<option value="NM">New Mexico</option>
+							<option value="NY">New York</option>
+							<option value="NC">North Carolina</option>
+							<option value="ND">North Dakota</option>
+							<option value="OH">Ohio</option>
+							<option value="OK">Oklahoma</option>
+							<option value="OR">Oregon</option>
+							<option value="PA">Pennsylvania</option>
+							<option value="RI">Rhode Island</option>
+							<option value="SC">South Carolina</option>
+							<option value="SD">South Dakota</option>
+							<option value="TN">Tennessee</option>
+							<option value="TX">Texas</option>
+							<option value="UT">Utah</option>
+							<option value="VT">Vermont</option>
+							<option value="VA">Virginia</option>
+							<option value="WA">Washington</option>
+							<option value="WV">West Virginia</option>
+							<option value="WI">Wisconsin</option>
+							<option value="WY">Wyoming</option>
+						</select>
 					</div>
+
 
 					<label class="col-lg-1 control-label">Zip Code:</label>
 					<div class="col-lg-2">

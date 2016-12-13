@@ -22,19 +22,21 @@ function clicking(){
 	var st = document.forms["addform"]["state"].value;
 	var zip = document.forms["addform"]["zipcode"].value;
 	
+	var reg = /^\d+$/;
+	
 	if (fn <= 2){
 		alert("Name is too short");
 		return false;
-	}else if(/^\d+$/.test(rs) === false){
+	}else if(reg.test(rs) === false){
 		alert("Invalid Room Size Enter Digits Only");
 		return false;
-	}else if(/^\d+$/.test(cp) === false){
+	}else if(reg.test(cp) === false){
 		alert("Invalid Capacity Enter Digits Only");
 		return false;
-	}else if(/^\d+$/.test(pr) === false){
+	}else if(reg.test(pr) === false){
 		alert("Invalid Price Enter Digits Only");
 		return false;
-	}else if(em <= 0){
+	}else if(validateEmail(em) === false){
 		alert("Enter a email");
 		return false;
 	}else if (/^[0-9]{5}(?:-[0-9]{4})?$/.test(zip) === false ){

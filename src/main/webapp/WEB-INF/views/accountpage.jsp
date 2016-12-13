@@ -36,8 +36,10 @@
  -->
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-				<li><a href="results">Venues</a></li>
+				<li><a href="results">Check Out Venues</a></li>
+				<li><a href="resources/addform.html">Add New Venue</a></li>
 				<li><a href="accountpage">My Account</a></li>
+				<li><a href="aboutus">Developers</a></li>
 				<li><a href="login">Login/Logout</a></li>
 			</ul>
 		</div>
@@ -45,43 +47,43 @@
 	</nav>
 
 	<h1>Account Page</h1>
-	<h2>
+	<h1>
 		Hi
 		<c:out value="${fullname}" />
 		!
-	</h2>
+	</h1>
 	
-	<a href="resources/addform.html">Add New Venue</a>
-
-	<h2>My Venues</h2>
-	<div class="clearfix">
-	<div class="form-group">
+	<h4 style="text-align: center"><a href="resources/addform.html">Add New Venue</a></h4>
+	
+	<h1 style="text-align: center margin-right: 20px">My Venues</h1>
+	<div class="container clearfix">
+			
+		<br>
 			<c:forEach items="${venuesOwned }" var="venue">
-
+				<div class="form-group">
 
 					<div class="col-lg-8">
 						<h3>
-							<a href="<c:url value='/updateinfo?venueId=${venue.venueId}' />">${venue.venueName}</a>
+							<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 						</h3>
+						<hr>
 					</div>
 					<div class="col-lg-2">
-						<form action="updateinfo?venueId=${venue.venueId}" method="post">
+						<form action="updateinfo?venueId=${venue.venueId}" method="post"
+						onSubmit="return confirm('Are you sure you want to update ${venue.venueName}?');">
 							<button type="submit" class="btn btn-primary">Update</button>
 						</form>
+						
 					</div>
 					<div class="col-lg-2">
 						<form action="deletevenue?venueId=${venue.venueId}" method="post"
-						onSubmit="return confirm('Are you sure you want to delete this venue?)">
+						onSubmit="return confirm('Are you sure you want to delete ${venue.venueName}?');">
 							<button type="submit" class="btn btn-default">Delete</button>
 						</form>
+					
 					</div>
-					<hr>
+				</div>		
 			</c:forEach>
-	</div>
-	</div>
-
-	<div class="footerprofile">
-		Local Eventuring <a href="aboutus">Developers</a>
 	</div>
 
 </body>
