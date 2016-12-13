@@ -14,6 +14,12 @@
   		<org.slf4j-version>1.6.6</org.slf4j-version>
   	</properties>
   	<dependencies>
+ 	<dependency>
+    <groupId>com.sendgrid</groupId>
+    <artifactId>sendgrid-java</artifactId>
+    <version>3.1.0</version>
+</dependency>
+ 	
  	
  		<dependency>
  			<groupId>commons-fileupload</groupId>

@@ -3,6 +3,7 @@ package com.malabanan.localeventuring;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.sendgrid.Content;
+import com.sendgrid.Email;
+import com.sendgrid.Mail;
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
+
 
 /**
  * Handles requests for the application home page.
@@ -520,5 +529,37 @@ public class HomeController {
 		return venue;
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) throws IOException {
+		logger.info("Welcome home! The client locale is {}.", locale);
 	
-}
+		
+	    Email from = new Email("localeventuring@gmail.com");
+	    String subject = "Hello World from the SendGrid Java Library!";
+	    Email to = new Email("milliza.mae@gmail.com"); //this will be a variable
+	    Content content = new Content("text/plain", "Hello, Email!");
+	    Mail mail = new Mail(from, subject, to, content);
+	    
+	    // concant First Name, Last name,message into a string and set into mail.
+	    
+	    //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
+	    SendGrid sg = new SendGrid(Send.getApiKey()); // store in static class 
+	    Request request = new Request();
+	    try {
+	      request.method = Method.POST;
+	      request.endpoint = "mail/send";
+	      request.body = mail.build();
+	      Response response = sg.api(request);
+	      System.out.println(response.statusCode);
+	      System.out.println(response.body);
+	      System.out.println(response.headers);
+	    } catch (IOException ex) {
+	      throw ex;
+	    }
+	    return "emailform";
+	  } 
+	
+		
+	} 
+	
+	

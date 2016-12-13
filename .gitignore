@@ -4,6 +4,7 @@
 .settings/
 hibernate.cfg.xml
 PhotoUpload.java
+Send.java 
 
 # Intellij
 .idea/
