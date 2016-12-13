@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="resources/style.css">
 <title>Venue Added!</title>
 </head>
-<h1>Venue Added</h1>
+
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -38,7 +38,7 @@
 	</nav>
 
 
-
+<h1>Venue Added</h1>
 
 <h1><c:out value="${venueName }"/></h1><br>
 <ul>
@@ -46,7 +46,7 @@
 <b><li>Capacity:</b> <c:out value="${capacity }"/><br>
 <b><li>Price Per Hour: </b> <c:out value="${price }"/><br>
 <img src = "${photoLink}"><br>
-${calendarLink }<br>
+<li>${calendarLink }</li><br>
 <b><li>Venue Description: </b> <c:out value="${description }"/><br> 
 </ul>
 

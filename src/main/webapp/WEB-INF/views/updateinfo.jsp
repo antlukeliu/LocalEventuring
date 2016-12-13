@@ -134,12 +134,13 @@ function validate(){
 					<a href=""></a> <label class="col-lg-2 control-label">Image
 					</label>
 					<div class="col-lg-10">
+					DISCLAIMER: One photo of our space is required (must be a .jpg, .jpeg or .png file)
 						<input type="file" class="form-control" name="file"
 							placeholder="Upload File">
 					</div>
 				</div>
 				
-				<label class="col-lg-2 control-label"></label> <a href=""
+				<label class="col-lg-2 control-label"></label> <a href="http://localhost:8080/localeventuring/caldirections" target="_blank"
 					class="col-lg-10">Directions on getting Google Calendar iframe</a>
 				<br>
 				<div class="form-group">
