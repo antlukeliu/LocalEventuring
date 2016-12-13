@@ -27,7 +27,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="">Home</a></li>
-					<li><a href="results">Check Out Venues</a></li>
+					<li><a href="searchresults">Check Out Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>				</ul>
 			</div>

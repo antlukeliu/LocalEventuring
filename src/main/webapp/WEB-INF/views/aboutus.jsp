@@ -45,7 +45,7 @@ h3{
  -->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-					<li><a href="results">Venues</a></li>
+					<li><a href="searchresults">Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>				</ul>
 			</div>

@@ -36,7 +36,6 @@
 			</ul>
 		<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-					<li><a href="results">Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>							</ul>
 		</div>
@@ -101,7 +100,7 @@
 			<div class="col-lg-12 inline">
 			<h2>
 				<img src="${venue.photoLink}" class="thumbnail" height="100px" width="200px">
-				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
+				<a href="<c:url value='/venueprofile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
 			<table>
 				<tr><td>Category: ${venue.category}</td></tr>

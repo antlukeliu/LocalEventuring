@@ -7,6 +7,33 @@
 <title>Calendar Directions</title>
 </head>
 <body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Local Eventuring</a>
+			</div>
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+		
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
+					<li><a href="searchresults">Event Spaces</a></li>
+					<li><a href="accountpage">My Account</a></li>
+					<li><a href="login">Login/Logout</a></li>				</ul>
+			</div>
+		</div>
+	</nav>
+
 <h1>Calendar Directions</h1>
 <p>1. Go to this link<i> <a href="https://calendar.google.com/calendar" target="_blank">Google Calendar Link</a></i></p>
 <p>

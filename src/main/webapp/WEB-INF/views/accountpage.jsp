@@ -30,7 +30,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-				<li><a href="results">Check Out Venues</a></li>
+				<li><a href="searchresults">Check Out Venues</a></li>
 				<li><a href="resources/addform.html">Add New Venue</a></li>
 				<li><a href="accountpage">My Account</a></li>
 				<li><a href="aboutus">Developers</a></li>
@@ -58,7 +58,7 @@
 
 					<div class="col-lg-8">
 						<h3>
-							<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
+							<a href="<c:url value='/venueprofile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 						</h3>
 						<hr>
 					</div>

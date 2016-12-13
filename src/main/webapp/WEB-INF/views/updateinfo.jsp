@@ -72,7 +72,7 @@ function validate(){
 	
 			<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
-					<li><a href="results">Venues</a></li>
+					<li><a href="searchresults">Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>			</ul>
 		</div>
@@ -134,7 +134,7 @@ function validate(){
 					<a href=""></a> <label class="col-lg-2 control-label">Image
 					</label>
 					<div class="col-lg-10">
-						<input type="file" class="form-control" name="file2"
+						<input type="file" class="form-control" name="file"
 							placeholder="Upload File">
 					</div>
 				</div>

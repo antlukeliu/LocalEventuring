@@ -173,20 +173,20 @@ public class HomeController {
 			return "login";
 		}
 		
-		String venueName = request.getParameter("venuename");
-		int roomSize = Integer.parseInt(request.getParameter("roomsize"));
+		String venueName = request.getParameter("venueName");
+		int roomSize = Integer.parseInt(request.getParameter("roomSize"));
 		int capacity = Integer.parseInt(request.getParameter("capacity"));
 		int price = Integer.parseInt(request.getParameter("price"));
 		String category = request.getParameter("category");
-		String str1 = request.getParameter("calendarlink");
+		String str1 = request.getParameter("calendarLink");
 		String calLink = "";
 		String description = request.getParameter("description");
-		String fullName = request.getParameter("fullname");
+		String fullName = request.getParameter("fullName");
 		String loginEmail = request.getParameter("email");
 		String address = request.getParameter("street");
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
-		String zipCode = request.getParameter("zipcode");
+		String zipCode = request.getParameter("zipCode");
 		
 		//Creating calLink
 		if (str1.startsWith("<")) {
@@ -215,7 +215,7 @@ public class HomeController {
 		
 		try {
 			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()); // upload method to upload photo to cloudinary
-			urlPic = (String) uploadResult.get("url");
+			urlPic = (String) uploadResult.get("secure_url");
 			
 			// System.out.println(urlPic);
 		} catch (IOException e) {
@@ -486,7 +486,7 @@ public class HomeController {
 		
 		try {
 			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-			urlPic = (String) uploadResult.get("url");
+			urlPic = (String) uploadResult.get("secure_url");
 			
 		//	System.out.println(urlPic);
 		} catch (IOException e) {
