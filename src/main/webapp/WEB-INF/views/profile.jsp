@@ -6,6 +6,55 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Profile</title>
 <link rel="stylesheet" href="resources/style.css"> 
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 500px;
+        width:600px;
+        border-radius: 4px;
+        border: 3px solid black;
+       }
+       .controls {
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        height: 29px;
+        margin-left: 17px;
+        margin-top: 10px;
+        outline: none;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 225px;
+      }
+
+      .controls:focus {
+        border-color: black;
+      }
+      .title {
+        font-weight: bold;
+      }
+      #infowindow-content {
+        display: none;
+      }
+      #map #infowindow-content {
+        display: inline;
+      }
+      h2{
+      font-size: 30px; 
+      text-align:left-center; 
+      text-weight:bold;  
+      text-decoration:underline; 
+      color:green; 
+      }
+     
+    </style>
+    
 </head>
 <body>
 
@@ -41,16 +90,117 @@
 			</div>
 		</div>
 	</nav>
-
-${venuename }<br>
-${roomsize }<br>
-${capacity }<br>
-${price }<br>
+<ul>
+<li><b>Name of Venue:</b> ${venuename }</li><br>
+<li><b>Size of Venue (sq. ft):</b> ${roomsize }</li><br>
+<li><b>Capacity:</b> ${capacity }</li><br>
+<li><b>Price Per Hour:</b>$${price }</li><br>
 <img src = "${photolink }"><br>
 
 
-${calendarlink }<br>
-${description }<br>
+<li>${calendarlink }</li><br>
+<li><b>Venue Description:</b> ${description }</li><br>
+</ul>
+<br>
+	<input id="user-input" class="controls" type="text" placeholder="Enter a location">
+	<div id="map">
+
+		<script>
+			var map;
+
+			function initMap() {
+				var detroit = new google.maps.LatLng(42.3313889, -83.0458333);
+				map = new google.maps.Map(document.getElementById('map'), {
+					zoom : 15,
+					center : detroit
+				});
+				var marker = new google.maps.Marker({
+					position : detroit,
+					map : map,
+					animation : google.maps.Animation.DROP,
+					draggable : true
+
+				});
+				initAutocomplete();
+			}
+			function initAutocomplete() {
+				//   var map = new google.maps.Map(document.getElementById('map'), {
+				//   center: {lat: 42.3313889, lng: -83.0458333},
+				// zoom: 10,
+				//map: map,
+				// });
+
+				// Create the search box and link it to map.
+				var input = document.getElementById('user-input');
+				var searchBox = new google.maps.places.SearchBox(input);
+				map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+				map.addListener('bounds_changed', function() {
+					searchBox.setBounds(map.getBounds());
+				});
+
+				var markers = [];
+
+				searchBox.addListener('places_changed', function() {
+					var place = searchBox.getPlaces();
+
+					if (place.length == 0) {
+						return;
+					}
+
+					// Clear off map.
+					// markers.forEach(function(marker) {
+					//marker.setMap(null);
+					// });
+					// markers = [];
+
+					// For each place, get the icon, name and location.
+					var bounds = new google.maps.LatLngBounds();
+					place.forEach(function(place) {
+
+						if (!place.geometry) {
+							console.log("Returned place contains no geometry");
+							return;
+						}
+						var icon = {
+							url : place.icon,
+							size : new google.maps.Size(71, 71),
+							origin : new google.maps.Point(0, 0),
+							anchor : new google.maps.Point(17, 34),
+							scaledSize : new google.maps.Size(25, 25)
+						};
+						var detroit = new google.maps.LatLng(
+								place.geometry.location.lat(),
+								place.geometry.location.lng());
+						map.setCenter(place.geometry.location);
+
+						//Create a marker for each place.
+						markers.push(new google.maps.Marker({
+							map : map,
+							icon : icon,
+							title : place.name,
+							zoom: 15, 
+							position : place.geometry.location
+						}));
+
+						if (place.geometry.viewport) {
+							// Only geocodes have viewport.
+							bounds.union(place.geometry.viewport);
+						} else {
+							bounds.extend(place.geometry.location);
+						}
+					});
+					map.fitBounds(bounds);
+				});
+			}
+		</script>
+
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSomm5E27N6WDyVMe8579tWLJTG2M9nC8&libraries=places&callback=initMap"
+			async defer></script>
+
+	</div>
+
 
 	<div class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></div>
 </body>
