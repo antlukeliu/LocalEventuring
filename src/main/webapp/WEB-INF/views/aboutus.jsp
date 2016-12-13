@@ -54,22 +54,21 @@ h3{
 
 <h1><u>Meet Our Team of Developers</u></h1>
 
-
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:285px;height:228px;">
 <h3><u>Milliza Malabanan</u></h3>
 <br>
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:285px;height:228px;">
 
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:285px;height:228px;">
 <h3><u>Frank Daidone</u></h3>
 <br>
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:285px;height:228px;">
 
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:285px;height:228px;">
 <h3><u>Anthony Liu</u></h3>
 <br>
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:285px;height:228px;">
 
+<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:285px;height:228px;">
 <h3><u>Daniel Christiansen</u></h3>
 <br>
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:285px;height:228px;">
 
 <div class="footerprofile">Local Eventuring <a href="accountpage" >Back to My Account</a></div>
 </body>
