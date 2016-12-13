@@ -301,7 +301,7 @@ public class HomeController {
 	    Content content = new Content("text/plain", requesting.getParameter("Message"));
 	    Mail mail = new Mail(from, subject, to, content);
 	    
-	    // concant First Name, Last name,message into a string and set into mail.
+	    // concatenate First Name, Last name,message into a string and set into mail.
 	    
 	   
 	    SendGrid sg = new SendGrid(Send.getApiKey()); // store in static class 
@@ -363,7 +363,7 @@ public class HomeController {
 	  } 
 
 
-	@RequestMapping(value = "/aboutus", method = RequestMethod.POST)
+	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
 	public String aboutUs(){
 		
 		return "aboutus";
