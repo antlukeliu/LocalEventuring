@@ -19,8 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.liu.hibernate1.Book;
-import com.liu.hibernate1.DAO;
 
 /**
  * Handles requests for the application home page.
