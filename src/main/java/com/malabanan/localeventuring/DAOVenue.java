@@ -52,26 +52,25 @@ public class DAOVenue {
 		return venues;
 	}
 	
-	public static void updateVenue(Venue v) {
+	public static void updateVenue(Venue v) { //name FranktheTank
 		if (factory == null)
-			setupFactory();
+			setupFactory();	
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
-		// save this specific record
-		hibernateSession.update(v);
+		// save this specific record | new FrankD
+		hibernateSession.update(v); //updates database 
 		hibernateSession.getTransaction().commit();
 		hibernateSession.close();
 	}
 	
-	public static void deleteVenue(Integer v) {
+	public static void deleteVenue(Integer v) { //takes venue id
 		if (factory == null)
 			setupFactory();
 	     Session session = factory.openSession();
 	      Transaction tx = null;
 	      try{
 	         tx = session.beginTransaction();
-	         Venue str = 
-	                   (Venue)session.get(Venue.class, v); 
+	         Venue str = (Venue)session.get(Venue.class, v); //venue
 	         session.delete(str); 
 	         tx.commit();
 	      }catch (HibernateException e) {

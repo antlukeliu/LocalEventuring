@@ -1,5 +1,7 @@
 package com.malabanan.localeventuring;
 
+//Take out address later
+
 public class Contact {
 	
 	private int contactId;

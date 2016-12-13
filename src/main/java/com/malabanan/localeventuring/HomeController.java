@@ -49,8 +49,8 @@ public class HomeController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest request) {
 		
-		HttpSession sessionClear = request.getSession(true);
-		sessionClear.invalidate();
+		HttpSession sessionClear = request.getSession(true); 
+		sessionClear.invalidate(); //delete session when you enter login
 
 		return "login";
 	}
@@ -74,7 +74,7 @@ public class HomeController {
 			session.setAttribute("fullname", fullname);
 		}
 		
-		//Fix this 
+		//Fix this -- have to create contact is contactID == 0;
 		String email = (String) session.getAttribute("name");
 		int contactId = findingContactId(email);
 		
@@ -193,6 +193,7 @@ public class HomeController {
 		Contact contact = new Contact();
 		int contactId = findingContactId(loginemail);
 		
+		//this is needed in accountpage 
 		if(contactId == 0){
 			contact.setEmail(loginemail);
 			contact.setName(fullname);
@@ -205,7 +206,7 @@ public class HomeController {
 		
 		
 		String urlPic = "";
-		System.out.println("upload: " + file.getOriginalFilename());
+		//System.out.println("upload: " + file.getOriginalFilename());
 
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
 				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
@@ -213,14 +214,14 @@ public class HomeController {
 		Venue venue = new Venue();
 		
 		try {
-			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()); // upload method to upload photo to cloudinary
 			urlPic = (String) uploadResult.get("url");
 			
-			System.out.println(urlPic);
-			model.addAttribute("image", urlPic);
+			// System.out.println(urlPic);
+			//model.addAttribute("image", urlPic);
 			
-			venue.setPhotoLink(urlPic);
-			System.out.println(urlPic);
+			//venue.setPhotoLink(urlPic);
+			// System.out.println(urlPic);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -250,10 +251,10 @@ public class HomeController {
 		
 		List<Venue> venues = DAOVenue.getVenues("From Venue");
 
-		if (venueId < 1) {
-			model.addAttribute("venueList", venues);
-			return "results";
-		}
+//		if (venueId < 1) {
+//			model.addAttribute("venueList", venues);
+//			return "results";
+//		}
 
 		int rankNum = venueId;
 		String venueName = "";
@@ -452,7 +453,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/deletevenue", method = RequestMethod.POST)
-	public String deleteBook(@RequestParam("rank") int rank,Model model, HttpServletRequest request){
+	public String deletevenue(@RequestParam("rank") int rank,Model model, HttpServletRequest request){
 		HttpSession session = request.getSession(true);
 		String email = (String) session.getAttribute("name");
 		
@@ -466,9 +467,8 @@ public class HomeController {
 		List<Venue> venues = DAOVenue.getVenues("FROM Venue");
 		
 		
-		model.addAttribute("bookList", venues);
 
-		return "list";
+		return "accountpage";
 	}
 	
 	//Methods to shorten amount of code used
@@ -529,8 +529,8 @@ public class HomeController {
 		return venue;
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws IOException {
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+	public String emailform(Locale locale, Model model) throws IOException {
 		logger.info("Welcome home! The client locale is {}.", locale);
 	
 		
@@ -542,14 +542,14 @@ public class HomeController {
 	    
 	    // concant First Name, Last name,message into a string and set into mail.
 	    
-	    //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
+	   
 	    SendGrid sg = new SendGrid(Send.getApiKey()); // store in static class 
 	    Request request = new Request();
 	    try {
 	      request.method = Method.POST;
 	      request.endpoint = "mail/send";
 	      request.body = mail.build();
-	      Response response = sg.api(request);
+	      Response response = sg.api(request);  //sendgrid sending the request to send email
 	      System.out.println(response.statusCode);
 	      System.out.println(response.body);
 	      System.out.println(response.headers);

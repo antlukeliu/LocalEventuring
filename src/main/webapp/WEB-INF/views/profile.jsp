@@ -179,7 +179,7 @@
 							map : map,
 							icon : icon,
 							title : place.name,
-							zoom: 15, 
+							zoom: 20, 
 							position : place.geometry.location
 						}));
 

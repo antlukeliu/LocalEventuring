@@ -29,12 +29,12 @@ public class SearchAlg {
 			queryString += " Where ";
 		}
 
-		
+		//filtered = "price < 50 " , "capacity <= 15 
 		for(int i=0; i<filtered.size(); i++){
 			if(i==0){
-				queryString += filtered.get(0);
+				queryString += filtered.get(0); //From Venue += price < 50 ~ "From Venue Where price < 50  
 			}else{
-				queryString = queryString + " and " + filtered.get(i);
+				queryString = queryString + " and " + filtered.get(i); //"From Venue Where price < 50 and capacity <= 15 and category = 'meetups' "
 			}	
 		}	
 		return queryString;
