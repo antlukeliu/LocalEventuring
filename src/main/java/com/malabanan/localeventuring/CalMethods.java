@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 
 //refactor later
 
-public class RandomMethods {
+public class CalMethods {
 	
 	public static String gettingCalendar(String str1) {
 		

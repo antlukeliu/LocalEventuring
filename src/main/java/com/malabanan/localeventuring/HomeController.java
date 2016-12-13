@@ -66,34 +66,35 @@ public class HomeController {
 		
 		if (request.getParameter("id").equals("")) {
 			return "login";
-		} else {
-			String email = request.getParameter("email");
+		} 
+			String email = request.getParameter("email").toLowerCase();
 			String fullname = request.getParameter("fullname");
 			session = request.getSession(true);
-			session.setAttribute("name", email);
+			session.setAttribute("loginemail", email);
 			session.setAttribute("fullname", fullname);
-		}
+		
 		
 		//Fix this -- have to create contact is contactID == 0;
-		String email = (String) session.getAttribute("name");
 		int contactId = findingContactId(email);
 		
+		Contact newContact = new Contact();
+		
 		if(contactId == 0){
-			model.addAttribute("error", "please sign in and hit continue");
+			newContact.setName(fullname);
+			newContact.setEmail(email);
 		}
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		for(Contact c: contacts){
-			if(c.getEmail().equals(email)){
+			if(c.getEmail().equalsIgnoreCase(email)){
 			contactId = c.getContactId();
 			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 			model.addAttribute("venuesOwned", venues);
-		}
+			}
 		}
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
-		
-		
+		model.addAttribute("id", request.getParameter("id"));
 		
 		return "accountpage";
 	}
@@ -102,23 +103,25 @@ public class HomeController {
 	public String accountpage2(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession(true);
-		String email = (String) session.getAttribute("name");
+		String email = (String) session.getAttribute("loginemail");
 		String fullname = (String) session.getAttribute("fullname");
+	
 		if (email == null){
 			return "login";
 		}
 
-	
 		int contactId = findingContactId(email);
 		
+		Contact newContact = new Contact();
 		
 		if(contactId == 0){
-			model.addAttribute("error", "please sign in and hit continue");
+			newContact.setName(fullname);
+			newContact.setEmail(email);
 		}
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
 		for(Contact c: contacts){
-			if(c.getEmail().equals(email)){
+			if(c.getEmail().equalsIgnoreCase(email)){
 			contactId = c.getContactId();
 			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
 			model.addAttribute("venuesOwned", venues);
@@ -162,77 +165,70 @@ public class HomeController {
 	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) {
 
 		HttpSession session = request.getSession(true);
-		String name = (String) session.getAttribute("name");
+		String email = (String) session.getAttribute("loginemail");
+		String urlPic = "";
+		Venue venue = new Venue();
 		
-		
-		if (name == null){
+		if (email == null){
 			return "login";
 		}
 		
-		String venuename = request.getParameter("venuename");
-		int roomsize = Integer.parseInt(request.getParameter("roomsize"));
+		String venueName = request.getParameter("venuename");
+		int roomSize = Integer.parseInt(request.getParameter("roomsize"));
 		int capacity = Integer.parseInt(request.getParameter("capacity"));
 		int price = Integer.parseInt(request.getParameter("price"));
 		String category = request.getParameter("category");
 		String str1 = request.getParameter("calendarlink");
 		String calLink = "";
 		String description = request.getParameter("description");
-		String fullname = request.getParameter("fullname");
-		String loginemail = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
+		String loginEmail = request.getParameter("email");
 		String address = request.getParameter("street");
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
-		String zipcode = request.getParameter("zipcode");
+		String zipCode = request.getParameter("zipcode");
 		
 		//Creating calLink
 		if (str1.startsWith("<")) {
-			calLink = RandomMethods.gettingCalendar(str1);
+			calLink = CalMethods.gettingCalendar(str1);
 		}
 		
 		//Creating a new contact if it does not exist
 		Contact contact = new Contact();
-		int contactId = findingContactId(loginemail);
+		int contactId = findingContactId(loginEmail);
 		
 		//this is needed in accountpage 
 		if(contactId == 0){
-			contact.setEmail(loginemail);
-			contact.setName(fullname);
+			contact.setEmail(loginEmail);
+			contact.setName(fullName);
 			DAOContact.addContact(contact);
 		}
 		
-		contactId = findingContactId(loginemail);
+		contactId = findingContactId(loginEmail);
 		
 		//Using Cloudinary to store an image
 		
-		
-		String urlPic = "";
 		//System.out.println("upload: " + file.getOriginalFilename());
 
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
 				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
-
-		Venue venue = new Venue();
 		
 		try {
 			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()); // upload method to upload photo to cloudinary
 			urlPic = (String) uploadResult.get("url");
 			
 			// System.out.println(urlPic);
-			//model.addAttribute("image", urlPic);
-			
-			//venue.setPhotoLink(urlPic);
-			// System.out.println(urlPic);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		modelAdding(model,0,venuename,roomsize,capacity, 
+		modelAdding(model,contactId,venueName,roomSize,capacity, 
 				price, category, urlPic, calLink, description,
-				address, city, state, zipcode);
+				address, city, state, zipCode);
 		
-		venue = settingVenue(contactId,venuename,roomsize,
+		venue = settingVenue(contactId,venueName,roomSize,
 				capacity, price, category, urlPic, calLink, description, 
-				address, city, state, zipcode);
+				address, city, state, zipCode);
 		
 		DAOVenue.addVenue(venue);
 
@@ -243,20 +239,14 @@ public class HomeController {
 	public String viewProfile(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession(true);
-		String name = (String) session.getAttribute("name");
+		String loginEmail = (String) session.getAttribute("loginemail");
 		
-		if (name == null){
+		if (loginEmail == null){
 			return "login";
 		}
 		
 		List<Venue> venues = DAOVenue.getVenues("From Venue");
 
-//		if (venueId < 1) {
-//			model.addAttribute("venueList", venues);
-//			return "results";
-//		}
-
-		int rankNum = venueId;
 		String venueName = "";
 		int roomSize = 0;
 		int capacity = 0;
@@ -268,7 +258,7 @@ public class HomeController {
 		String street = "";
 		String city = "";
 		String state = "";
-		String zipcode = "";
+		String zipCode = "";
 
 		for (Venue v : venues) {
 			if (v.getVenueId() == venueId) {
@@ -283,261 +273,32 @@ public class HomeController {
 				street = v.getStreet();
 				city = v.getCity();
 				state = v.getState();
-				zipcode = v.getZipcode();
+				zipCode = v.getZipcode();
 				break;
 			}
 		}
 		
-		if(venueName.equals("")){
-			return "home";
-		}
-
-		modelAdding(model,rankNum,venueName,roomSize,capacity, 
+		model.addAttribute("email", loginEmail);
+		modelAdding(model,venueId,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
-				street, city, state, zipcode);
+				street, city, state, zipCode);
 		return "profile";
 	}
-
-	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
-	public String aboutUs(){
-		
-		return "aboutus";
-	}
 	
-	@RequestMapping(value = "/caldirections", method = RequestMethod.GET)
-	public String caldirections(){
+	@RequestMapping(value = "/emailform", method = RequestMethod.POST)
+	public String emailform(Model model, HttpServletRequest requesting) throws IOException {
 		
-		return "caldirections";
-	}
-	
-	@RequestMapping(value = "/updateinfo", method = {RequestMethod.GET, RequestMethod.POST})
-	public String viewupdate(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request){
+		HttpSession session = requesting.getSession(true);
+		String loginemail = (String) session.getAttribute("loginemail");
 		
-		HttpSession session = request.getSession(true);
-		String name = (String) session.getAttribute("name");
-		//String email
-		
-		List<Venue> venues = DAOVenue.getVenues("From Venue");
-		
-		if (name == null){
+		if (loginemail == null){
 			return "login";
 		}
 		
-		if (venueId < 1) {
-			model.addAttribute("venueList", venues);
-			return "results";
-		}
-		
-		int rankNum = venueId;
-		int contactId = 0;
-		String venueName = "";
-		int roomSize = 0;
-		int capacity = 0;
-		int price = 0;
-		String category ="";
-		String photoLink = "";
-		String calendarLink = "";
-		String description = "";
-		String street = "";
-		String city = "";
-		String state = "";
-		String zipcode = "";
-
-		for (Venue v : venues) {
-			if (v.getVenueId() == venueId) {
-				venueName = v.getVenueName();
-				contactId = v.getContactId();
-				roomSize = v.getRoomSize();
-				capacity = v.getCapacity();
-				price = v.getPrice();
-				category = v.getCategory();
-				photoLink = v.getPhotoLink();
-				calendarLink = v.getCalendarLink();
-				description = v.getDescription();
-				street = v.getStreet();
-				city = v.getCity();
-				state = v.getState();
-				zipcode = v.getZipcode();
-				break;
-			}
-		}
-		
-		List<Contact> contacts = DAOContact.getContacts("From Contact where contactId =" +contactId);		
-
-		for(Contact c: contacts){
-			if(c.getEmail().equalsIgnoreCase(name)){
-				continue;
-			}else {
-				return "accessdenied";
-			}
-		}
-		
-		model.addAttribute("email", name);
-		model.addAttribute("contactid", contactId);
-		modelAdding(model,rankNum,venueName,roomSize,capacity, 
-				price, category, photoLink, calendarLink, description,
-				street, city, state, zipcode);
-		
-		return "updateinfo";
-	}
-	
-	
-	@RequestMapping(value = "/viewupdate", method = RequestMethod.GET)
-	public String ViewUpdate(Model model, HttpServletRequest request,  @RequestParam("file") MultipartFile file) {
-		
-		//Fix this method
-		HttpSession session = request.getSession(true);
-		String email = (String) session.getAttribute("name");
-		
-		if (email == null){
-			return "login";
-		}
-		
-		List<Venue> venues = DAOVenue.getVenues("From Venue");
-		
-		//Make sure I get the integer in update form
-		int venueId = Integer.parseInt(request.getParameter("numId"));
-		String venuename = request.getParameter("venuename");
-		int contactId = Integer.parseInt(request.getParameter("contactid"));
-		int roomsize = Integer.parseInt(request.getParameter("roomsize"));
-		int capacity = Integer.parseInt(request.getParameter("capacity"));
-		int price = Integer.parseInt(request.getParameter("price"));
-		String category = request.getParameter("category");
-		String str1 = request.getParameter("calendarlink");
-		String calLink = "";
-		String description = request.getParameter("description");
-		String fullname = request.getParameter("fullname");
-		String loginemail = request.getParameter("email");
-		String address = request.getParameter("street");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String zipcode = request.getParameter("zipcode");
-		
-		
-		
-		String urlPic = "";
-		System.out.println("upload: " + file.getOriginalFilename());
-
-		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
-				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
-
-		Venue venue = new Venue();
-		
-		try {
-			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-			urlPic = (String) uploadResult.get("url");
-			
-			System.out.println(urlPic);
-			model.addAttribute("image", urlPic);
-			
-			venue.setPhotoLink(urlPic);
-			System.out.println(urlPic);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		venue = settingVenue(contactId,venuename,roomsize,
-				capacity, price, category, urlPic, calLink, description, 
-				address, city, state, zipcode);
-		
-		DAOVenue.updateVenue(venue);
-			
-		if(venuename.equals("")){
-			return "home";
-		}
-
-		//modelAdding(model,rankNum,venueName,roomSize,capacity, 
-		//		price, category, photoLink, calendarLink, description);
-		
-		return "viewupdate";
-	}
-	
-	@RequestMapping(value = "/deletevenue", method = RequestMethod.POST)
-	public String deletevenue(@RequestParam("rank") int rank,Model model, HttpServletRequest request){
-		HttpSession session = request.getSession(true);
-		String email = (String) session.getAttribute("name");
-		
-		if (email == null){
-			return "login";
-		}
-		
-		
-		
-		DAOVenue.deleteVenue(rank);
-		List<Venue> venues = DAOVenue.getVenues("FROM Venue");
-		
-		
-
-		return "accountpage";
-	}
-	
-	//Methods to shorten amount of code used
-	
-	private static void modelAdding(Model model, int rankNum, String venueName, 
-			int roomSize, int capacity, int price, String category, 
-			String photoLink, String calendarLink, String description,
-			String address, String city, String state, String zipcode){
-		
-		model.addAttribute("venueid", rankNum);
-		model.addAttribute("venuename", venueName);
-		model.addAttribute("roomsize", roomSize);
-		model.addAttribute("capacity", capacity);
-		model.addAttribute("price", price);
-		model.addAttribute("category", category);
-		model.addAttribute("photolink", photoLink);
-		model.addAttribute("calendarlink", calendarLink);
-		model.addAttribute("description", description);
-		model.addAttribute("street", address);
-		model.addAttribute("city", city);
-		model.addAttribute("state", state);
-		model.addAttribute("zipcode", zipcode);
-	}
-	
-	private static int findingContactId(String email){
-		List<Contact> contacts = DAOContact.getContacts("From Contact");
-		int contactId = 0;
-		
-		for(Contact c: contacts){
-			if (c.getEmail().equals(email)){
-				contactId = c.getContactId();
-			}
-		}
-	
-		return contactId;
-	}
-
-	private static Venue settingVenue(int contactId, String venueName, int roomSize,
-			int capacity, int price, String category, String urlPic,
-			String calLink, String description, String address, String city,
-			String state, String zipcode){
-		
-		Venue venue = new Venue();
-		venue.setContactId(contactId);
-		venue.setVenueName(venueName);
-		venue.setRoomSize(roomSize);
-		venue.setCapacity(capacity);
-		venue.setPrice(price);
-		venue.setCategory(category);
-		venue.setPhotoLink(urlPic);
-		venue.setCalendarLink(calLink);
-		venue.setDescription(description);
-		venue.setStreet(address);
-		venue.setCity(city);
-		venue.setState(state);
-		venue.setZipcode(zipcode);
-
-		return venue;
-	}
-	
-	@RequestMapping(value = "/email", method = RequestMethod.GET)
-	public String emailform(Locale locale, Model model) throws IOException {
-		logger.info("Welcome home! The client locale is {}.", locale);
-	
-		
-	    Email from = new Email("localeventuring@gmail.com");
-	    String subject = "Hello World from the SendGrid Java Library!";
-	    Email to = new Email("milliza.mae@gmail.com"); //this will be a variable
-	    Content content = new Content("text/plain", "Hello, Email!");
+	    Email from = new Email(requesting.getParameter("yourEmail"));
+	    String subject = requesting.getParameter("Subject");
+	    Email to = new Email(requesting.getParameter("toEmail")); //this will be a variable
+	    Content content = new Content("text/plain", requesting.getParameter("Message"));
 	    Mail mail = new Mail(from, subject, to, content);
 	    
 	    // concant First Name, Last name,message into a string and set into mail.
@@ -556,10 +317,275 @@ public class HomeController {
 	    } catch (IOException ex) {
 	      throw ex;
 	    }
-	    return "emailform";
-	  } 
-	
+	    
+	    List<Venue> venues = DAOVenue.getVenues("From Venue");
+	    
+	    int venueId = Integer.parseInt(requesting.getParameter("venueId"));
+		String venueName = "";
+		int roomSize = 0;
+		int capacity = 0;
+		int price = 0;
+		String category ="";
+		String photoLink = "";
+		String calendarLink = "";
+		String description = "";
+		String street = "";
+		String city = "";
+		String state = "";
+		String zipCode = "";
+
+		for (Venue v : venues) {
+			if (v.getVenueId() == venueId) {
+				venueName = v.getVenueName();
+				roomSize = v.getRoomSize();
+				capacity = v.getCapacity();
+				price = v.getPrice();
+				category = v.getCategory();
+				photoLink = v.getPhotoLink();
+				calendarLink = v.getCalendarLink();
+				description = v.getDescription();
+				street = v.getStreet();
+				city = v.getCity();
+				state = v.getState();
+				zipCode = v.getZipcode();
+				break;
+			}
+		}
 		
+		
+		model.addAttribute("email", loginemail);
+		modelAdding(model,venueId,venueName,roomSize,capacity, 
+				price, category, photoLink, calendarLink, description,
+				street, city, state, zipCode);
+		return "profile";
+
+	    
+	  } 
+
+
+	@RequestMapping(value = "/aboutus", method = RequestMethod.POST)
+	public String aboutUs(){
+		
+		return "aboutus";
+	}
+	
+	@RequestMapping(value = "/caldirections", method = RequestMethod.GET)
+	public String caldirections(){
+		
+		return "caldirections";
+	}
+	
+	@RequestMapping(value = "/updateinfo", method = {RequestMethod.GET, RequestMethod.POST})
+	public String updateinfo(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request){
+		
+		HttpSession session = request.getSession(true);
+		String loginEmail = (String) session.getAttribute("loginemail");
+		//String email
+		
+		List<Venue> venues = DAOVenue.getVenues("From Venue");
+		
+		if (loginEmail == null){
+			return "login";
+		}
+		
+		int rankNum = venueId;
+		int contactId = 0;
+		String venueName = "";
+		int roomSize = 0;
+		int capacity = 0;
+		int price = 0;
+		String category ="";
+		String photoLink = "";
+		String calendarLink = "";
+		String description = "";
+		String street = "";
+		String city = "";
+		String state = "";
+		String zipCode = "";
+
+		for (Venue v : venues) {
+			if (v.getVenueId() == venueId) {
+				venueName = v.getVenueName();
+				contactId = v.getContactId();
+				roomSize = v.getRoomSize();
+				capacity = v.getCapacity();
+				price = v.getPrice();
+				category = v.getCategory();
+				photoLink = v.getPhotoLink();
+				calendarLink = v.getCalendarLink();
+				description = v.getDescription();
+				street = v.getStreet();
+				city = v.getCity();
+				state = v.getState();
+				zipCode = v.getZipcode();
+				break;
+			}
+		}
+		
+		List<Contact> contacts = DAOContact.getContacts("From Contact where contactId =" +contactId);		
+
+		for(Contact c: contacts){
+			if(c.getEmail().equalsIgnoreCase(loginEmail)){
+				continue;
+			}else {
+				return "accessdenied";
+			}
+		}
+		
+		model.addAttribute("email", loginEmail);
+		model.addAttribute("contactId", contactId);
+		modelAdding(model,rankNum,venueName,roomSize,capacity, 
+				price, category, photoLink, calendarLink, description,
+				street, city, state, zipCode);
+		
+		return "updateinfo";
+	}
+	
+	
+	@RequestMapping(value = "/viewupdate", method = RequestMethod.POST)
+	public String viewupdate(Model model, HttpServletRequest request,  @RequestParam("file") MultipartFile file) {
+		
+		HttpSession session = request.getSession(true);
+		String email = (String) session.getAttribute("loginemail");
+		
+		if (email == null){
+			return "login";
+		}
+		
+		List<Venue> venues = DAOVenue.getVenues("From Venue");
+		
+		//Make sure I get the integer in update form
+		int venueId = Integer.parseInt(request.getParameter("venueId"));
+		String venueName = request.getParameter("venueName");
+		int contactId = Integer.parseInt(request.getParameter("contactId"));
+		int roomSize = Integer.parseInt(request.getParameter("roomSize"));
+		int capacity = Integer.parseInt(request.getParameter("capacity"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		String category = request.getParameter("category");
+		String str1 = request.getParameter("calendarLink");
+		String calLink = "";
+		String description = request.getParameter("description");
+		String fullName = request.getParameter("fullName");
+		String loginEmail = request.getParameter("email");
+		String street = request.getParameter("street");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String zipCode = request.getParameter("zipCode");
+		
+		if (str1.startsWith("<")) {
+			calLink = CalMethods.gettingCalendar(str1);
+		}
+		
+		String urlPic = "";
+		System.out.println("upload: " + file.getOriginalFilename());
+
+		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", PhotoUpload.getCloudName(), "api_key",
+				PhotoUpload.getApiKey(), "api_secret", PhotoUpload.getApiSecret()));
+
+		Venue venue = new Venue();
+		
+		try {
+			Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+			urlPic = (String) uploadResult.get("url");
+			
+		//	System.out.println(urlPic);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		venue = settingVenue(contactId,venueName,roomSize,
+				capacity, price, category, urlPic, calLink, description, 
+				street, city, state, zipCode);
+		
+		venue.setVenueId(venueId);
+		DAOVenue.updateVenue(venue);
+
+		modelAdding(model,venueId,venueName,roomSize,capacity, 
+				price, category, urlPic, calLink, description,
+				street, city, state, zipCode);
+		
+		return "viewupdate";
+	}
+	
+	@RequestMapping(value = "/deletevenue", method = RequestMethod.POST)
+	public String deletevenue(@RequestParam("venueId") int venueId,Model model, HttpServletRequest request){
+		HttpSession session = request.getSession(true);
+		String email = (String) session.getAttribute("loginemail");
+		
+		if (email == null){
+			return "login";
+		}
+		
+		DAOVenue.deleteVenue(venueId);
+		
+		
+		List<Contact> contacts = DAOContact.getContacts("From Contact");
+		for(Contact c: contacts){
+			if(c.getEmail().equalsIgnoreCase(email)){
+			int contactId = c.getContactId();
+			List<Venue> venues = DAOVenue.getVenues("FROM Venue Where contactId =" + contactId);
+			model.addAttribute("venuesOwned", venues);
+			}
+		}
+
+		return "accountpage";
+	}
+	
+	//Methods to shorten amount of code used
+	
+	private static void modelAdding(Model model, int rankNum, String venueName, 
+			int roomSize, int capacity, int price, String category, 
+			String photoLink, String calendarLink, String description,
+			String address, String city, String state, String zipCode){
+		
+		model.addAttribute("venueId", rankNum);
+		model.addAttribute("venueName", venueName);
+		model.addAttribute("roomSize", roomSize);
+		model.addAttribute("capacity", capacity);
+		model.addAttribute("price", price);
+		model.addAttribute("category", category);
+		model.addAttribute("photoLink", photoLink);
+		model.addAttribute("calendarLink", calendarLink);
+		model.addAttribute("description", description);
+		model.addAttribute("street", address);
+		model.addAttribute("city", city);
+		model.addAttribute("state", state);
+		model.addAttribute("zipCode", zipCode);
+	}
+	
+	private static int findingContactId(String email){
+		List<Contact> contacts = DAOContact.getContacts("From Contact");
+		int contactId = 0;
+		
+		for(Contact c: contacts){
+			if (c.getEmail().equalsIgnoreCase(email)){
+				contactId = c.getContactId();
+			}
+		}
+	
+		return contactId;
+	}
+
+	private static Venue settingVenue(int contactId, String venueName, int roomSize,
+			int capacity, int price, String category, String urlPic,
+			String calLink, String description, String address, String city,
+			String state, String zipCode){
+		
+		Venue venue = new Venue();
+		venue.setContactId(contactId);
+		venue.setVenueName(venueName);
+		venue.setRoomSize(roomSize);
+		venue.setCapacity(capacity);
+		venue.setPrice(price);
+		venue.setCategory(category);
+		venue.setPhotoLink(urlPic);
+		venue.setCalendarLink(calLink);
+		venue.setDescription(description);
+		venue.setStreet(address);
+		venue.setCity(city);
+		venue.setState(state);
+		venue.setZipcode(zipCode);
+
+		return venue;
+	}
 	} 
-	
-	

@@ -88,8 +88,8 @@ function validate(){
 		Venue Number: #<c:out value="${venueid}" />
 	</h1>
 	<div class="container">
-		<form name="updateform" action="ViewUpdate" method="post"
-			class="form-horizontal" onSubmit="return validate()">
+		<form name="updateform" action="viewupdate" method="post"
+		enctype="multipart/form-data"	class="form-horizontal" onSubmit="return validate()">
 			<fieldset>
 				<legend>All Fields Must Have Inputs Information</legend>
 				<div class="form-group">
@@ -101,7 +101,7 @@ function validate(){
 						<input type="hidden" name="venueId"
 							value="${venueid}">
 						<input type="hidden" name="contactId"
-							value="${contactid}">	
+							value="${contactId}">	
 					</div>
 				</div>
 				<div class="form-group">
@@ -140,7 +140,7 @@ function validate(){
 					<a href=""></a> <label class="col-lg-2 control-label">Image
 					</label>
 					<div class="col-lg-10">
-						<input type="file" class="form-control" name="file"
+						<input type="file" class="form-control" name="file2"
 							placeholder="Upload File">
 					</div>
 				</div>

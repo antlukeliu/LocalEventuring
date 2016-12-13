@@ -101,6 +101,50 @@
 <li>${calendarlink }</li><br>
 <li><b>Venue Description:</b> ${description }</li><br>
 </ul>
+
+<div class="container">
+<form name="addform" action="email" method="post">
+<div class="form-group">
+
+<input type = "hidden" name = "toEmail" value = ${email}> 
+					<label for="" class="col-lg-2 control-label"></label>
+					<div class="col-lg-5">
+						<input type="text" class="form-control" name="yourEmail"
+							placeholder="Your Email">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-lg-2 control-label"></label>
+					<div class="col-lg-5">
+						<input type="text" class="form-control" name="Subject"
+							placeholder="Subject">
+					</div>
+				</div>
+					<div class="form-group">
+					<label for="textArea" class="col-lg-2 control-label"></label>
+					<div class="col-lg-5">
+					<span class = "help-block">Message</span>
+						<textarea class="form-control" rows="5" id="textArea"
+							name="Message"></textarea>
+					
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary-default">Send Email</button>
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br>
 	<input id="user-input" class="controls" type="text" placeholder="Enter a location">
 	<div id="map">

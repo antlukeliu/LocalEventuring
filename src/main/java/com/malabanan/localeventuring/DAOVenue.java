@@ -58,7 +58,7 @@ public class DAOVenue {
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
 		// save this specific record | new FrankD
-		hibernateSession.update(v); //updates database 
+		hibernateSession.merge(v); //updates database 
 		hibernateSession.getTransaction().commit();
 		hibernateSession.close();
 	}
