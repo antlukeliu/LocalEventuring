@@ -15,15 +15,15 @@
 	}
 
 function validate(){
-	var em = document.forms["addform"]["venuename"].value;
-	var rs = document.forms["addform"]["roomsize"].value;
+	var em = document.forms["addform"]["venueName"].value;
+	var rs = document.forms["addform"]["roomSize"].value;
 	var cp = document.forms["addform"]["capacity"].value;
 	var pr = document.forms["addform"]["price"].value;
-	var fn = document.forms["addform"]["fullname"].value;
+	var fn = document.forms["addform"]["fullName"].value;
 	var em = document.forms["addform"]["email"].value;
 	var ct = document.forms["addform"]["city"].value;
 	var st = document.forms["addform"]["state"].value;
-	var zip = document.forms["addform"]["zipcode"].value;
+	var zip = document.forms["addform"]["zipCode"].value;
 	
 	var reg = /^\d+$/;
 	
@@ -69,13 +69,7 @@ function validate(){
 			<ul class="nav navbar-nav">
 
 			</ul>
-			<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+	
 			<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Venues</a></li>
@@ -85,7 +79,7 @@ function validate(){
 	</div>
 	</nav>
 	<h1>
-		Venue Number: #<c:out value="${venueid}" />
+		Venue Number: #<c:out value="${venueId}" />
 	</h1>
 	<div class="container">
 		<form name="updateform" action="viewupdate" method="post"
@@ -96,10 +90,10 @@ function validate(){
 					<label for="venueName" class="col-lg-2 control-label">Venue
 						Name:</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" name="venuename"
-							value="${venuename}">
+						<input type="text" class="form-control" name="venueName"
+							value="${venueName}">
 						<input type="hidden" name="venueId"
-							value="${venueid}">
+							value="${venueId}">
 						<input type="hidden" name="contactId"
 							value="${contactId}">	
 					</div>
@@ -107,8 +101,8 @@ function validate(){
 				<div class="form-group">
 					<label class="col-lg-2 control-label">Room Size:</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" name="roomsize"
-							value="${roomsize}">
+						<input type="text" class="form-control" name="roomSize"
+							value="${roomSize}">
 					</div>
 
 					<label class="col-lg-2 control-label">Capacity:</label>
@@ -152,8 +146,8 @@ function validate(){
 
 					<label class="col-lg-2 control-label">Calendar Link:</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" name="calendarlink"
-							value="${calenderLink}">
+						<input type="text" class="form-control" name="calendarLink"
+							value="${calendarLink}">
 					</div>
 				</div>
 
@@ -250,8 +244,8 @@ function validate(){
 
 					<label class="col-lg-1 control-label">Zip Code:</label>
 					<div class="col-lg-2">
-						<input type="text" class="form-control" name="zipcode"
-							value="${zipcode}">
+						<input type="text" class="form-control" name="zipCode"
+							value="${zipCode}">
 					</div>
 				</div>
 

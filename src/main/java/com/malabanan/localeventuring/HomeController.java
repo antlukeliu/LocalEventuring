@@ -133,8 +133,8 @@ public class HomeController {
 		return "accountpage";
 	}
 
-	@RequestMapping(value = "/results", method = RequestMethod.GET)
-	public String home(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/searchresults", method = RequestMethod.GET)
+	public String searchresults(Model model, HttpServletRequest request) {
 
 		List<Venue> venues = new ArrayList<Venue>();
 
@@ -158,7 +158,7 @@ public class HomeController {
 
 		model.addAttribute("venueList", venues);
 
-		return "results";
+		return "searchresults";
 	}
 
 	@RequestMapping(value = "/addform", method = RequestMethod.POST)
@@ -232,11 +232,11 @@ public class HomeController {
 		
 		DAOVenue.addVenue(venue);
 
-		return "addresults";
+		return "addsummary";
 	}
 
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String viewProfile(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/venueprofile", method = RequestMethod.GET)
+	public String venueprofile(@RequestParam("venueId") int venueId, Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession(true);
 		String loginEmail = (String) session.getAttribute("loginemail");
@@ -282,7 +282,7 @@ public class HomeController {
 		modelAdding(model,venueId,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
 				street, city, state, zipCode);
-		return "profile";
+		return "venueprofile";
 	}
 	
 	@RequestMapping(value = "/emailform", method = RequestMethod.POST)
@@ -357,7 +357,7 @@ public class HomeController {
 		modelAdding(model,venueId,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
 				street, city, state, zipCode);
-		return "profile";
+		return "venueprofile";
 
 	    
 	  } 

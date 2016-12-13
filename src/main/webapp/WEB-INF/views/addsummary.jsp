@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Contact Summary</title>
+<link rel="stylesheet" href="resources/style.css">
+<title>Venue Added!</title>
 </head>
+<h1>Venue Added</h1>
 <body>
-
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -25,29 +27,28 @@
 				<ul class="nav navbar-nav">
 
 				</ul>
-				<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+		
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Event Spaces</a></li>
 					<li><a href="accountpage">My Account</a></li>
-					<li><a href="login">Login/Logout</a></li>
-				</ul>
+					<li><a href="login">Login/Logout</a></li>				</ul>
 			</div>
 		</div>
 	</nav>
 
 
-<h1>Contact Added!</h1>
 
-name: ${firstname} ${lastname } <br>
-email: ${email }<br>
-address: ${street} ${city} ${state } ${zipcode} <br>
 
-<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+<h1><c:out value="${venueName }"/></h1><br>
+<ul>
+<li>Room Size (sq ft.):</b> <c:out value="${roomSize }"/></li><br>
+<b><li>Capacity:</b> <c:out value="${capacity }"/><br>
+<b><li>Price Per Hour: </b> <c:out value="${price }"/><br>
+<img src = "${photoLink}"><br>
+${calendarLink }<br>
+<b><li>Venue Description: </b> <c:out value="${description }"/><br> 
+</ul>
+
 </body>
 </html>

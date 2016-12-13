@@ -45,7 +45,7 @@
 
 <h1>Please upload a photo of your space here: </h1>
 
-<img src = "${image}">
+<img src = "${photoLink}">
 <footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 

@@ -26,13 +26,7 @@
 				<ul class="nav navbar-nav">
 
 				</ul>
-				<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+	
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Venues</a></li>
@@ -48,7 +42,7 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <form name="login" method="POST" action="accountpage">
 <input type="hidden" name="email">
-<input type="hidden" name="fullname">
+<input type="hidden" name="fullName">
 <input type="hidden" name="id">
 <button type="submit" class="btn btn-primary">Continue</button>
 </form>
@@ -57,7 +51,7 @@ function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       var id_token = googleUser.getAuthResponse().id_token;
       document.getElementsByName("email")[0].value=profile.getEmail();
-      document.getElementsByName("fullname")[0].value=profile.getName();
+      document.getElementsByName("fullName")[0].value=profile.getName();
       document.getElementsByName("id")[0].value=id_token;
     }
     

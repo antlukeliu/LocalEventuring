@@ -24,13 +24,7 @@
 				<ul class="nav navbar-nav">
 
 				</ul>
-				<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+		
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Venues</a></li>
@@ -41,7 +35,7 @@
 	</nav>
 
 
-<h1>You may not enter</h1>
+<h1>Please Log In</h1>
 
 </body>
 </html>

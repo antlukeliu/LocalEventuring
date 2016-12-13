@@ -12,15 +12,15 @@
 	}
 
 function clicking(){
-	var em = document.forms["addform"]["venuename"].value;
-	var rs = document.forms["addform"]["roomsize"].value;
+	var vm = document.forms["addform"]["venueName"].value;
+	var rs = document.forms["addform"]["roomSize"].value;
 	var cp = document.forms["addform"]["capacity"].value;
 	var pr = document.forms["addform"]["price"].value;
-	var fn = document.forms["addform"]["fullname"].value;
+	var fn = document.forms["addform"]["fullName"].value;
 	var em = document.forms["addform"]["email"].value;
 	var ct = document.forms["addform"]["city"].value;
 	var st = document.forms["addform"]["state"].value;
-	var zip = document.forms["addform"]["zipcode"].value;
+	var zip = document.forms["addform"]["zipCode"].value;
 	
 	var reg = /^\d+$/;
 	
@@ -67,13 +67,7 @@ function clicking(){
 				<ul class="nav navbar-nav">
 
 				</ul>
-				<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+	
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/localeventuring/">Home</a></li>
 					<li><a href="/localeventuring/results">Venues</a></li>
@@ -93,14 +87,14 @@ function clicking(){
 					<label for="venueName" class="col-lg-2 control-label">Venue
 						Name:</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" name="venuename"
+						<input type="text" class="form-control" name="venueName"
 							placeholder="Venue Name">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-lg-2 control-label">Room Size:</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" name="roomsize"
+						<input type="text" class="form-control" name="roomSize"
 							placeholder="In SQ. FT">
 					</div>
 					<label class="col-lg-2 control-label">Capacity:</label>
@@ -166,7 +160,7 @@ function clicking(){
 					<label for="fullname" class="col-lg-2 control-label">Contact
 						Name(First Last):</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" name="full name"
+						<input type="text" class="form-control" name="fullName"
 							placeholder="John Smith">
 					</div>
 				</div>
@@ -253,7 +247,7 @@ function clicking(){
 
 					<label class="col-lg-1 control-label">Zip Code:</label>
 					<div class="col-lg-2">
-						<input type="text" class="form-control" name="zipcode"
+						<input type="text" class="form-control" name="zipCode"
 							placeholder="48211">
 					</div>
 				</div>

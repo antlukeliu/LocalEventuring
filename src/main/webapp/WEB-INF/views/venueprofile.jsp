@@ -75,13 +75,7 @@
 				<ul class="nav navbar-nav">
 
 				</ul>
-				<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+		
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 					<li><a href="results">Venues</a></li>
@@ -91,14 +85,14 @@
 		</div>
 	</nav>
 <ul>
-<li><b>Name of Venue:</b> ${venuename }</li><br>
-<li><b>Size of Venue (sq. ft):</b> ${roomsize }</li><br>
+<li><b>Name of Venue:</b> ${venueName }</li><br>
+<li><b>Size of Venue (sq. ft):</b> ${roomSize }</li><br>
 <li><b>Capacity:</b> ${capacity }</li><br>
-<li><b>Price Per Hour:</b>$${price }</li><br>
-<img src = "${photolink }"><br>
+<li><b>Price Per Hour:</b>${price }</li><br>
+<img src = "${photoLink }"><br>
 
 
-<li>${calendarlink }</li><br>
+<li>${calendarLink }</li><br>
 <li><b>Venue Description:</b> ${description }</li><br>
 </ul>
 

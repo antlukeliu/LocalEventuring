@@ -27,13 +27,7 @@
 			<ul class="nav navbar-nav">
 
 			</ul>
-			<!-- 				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
- -->
+
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="http://localhost:8080/localeventuring">Home</a></li>
 				<li><a href="results">Check Out Venues</a></li>
@@ -49,7 +43,7 @@
 	<h1>Account Page</h1>
 	<h1>
 		Hi
-		<c:out value="${fullname}" />
+		<c:out value="${fullName}" />
 		!
 	</h1>
 	
