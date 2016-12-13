@@ -135,7 +135,12 @@ public class HomeController {
 			capacity = request.getParameter("people");
 		}
 		
-		String[] filters = { price,  capacity};
+		String category = "";
+		if (request.getParameter("people") != null) {
+			category = request.getParameter("category");
+		}
+		
+		String[] filters = { price,  capacity, category};
 		String queryString = SearchAlg.getQueryString(filters);
 		venues = DAOVenue.getVenues(queryString);
 

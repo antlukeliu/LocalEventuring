@@ -9,6 +9,12 @@
 <title>Results</title>
 
 <link rel="stylesheet" href="resources/style.css">
+<style>
+ .inline{
+ 	display: flex;
+ 	justify-content: space-around;
+ }
+</style>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -76,6 +82,21 @@
 				people <br> <input type="radio" name="people"
 					value="10"> 60+ people
 			</fieldset>
+			
+			<fieldset id="group3">
+				<br>
+				<p>Category</p>
+				<input type="radio" name="category" value=""> 
+				<br> 
+				<input type="radio" name="category" value="11"> Meetings 
+				<br> <input type="radio" name="category" value="12"> Meetups 
+				<br> <input type="radio" name="category"
+					value="13"> Trade Show
+				people <br> <input type="radio" name="category"
+					value="14"> Parties All Ages
+				people <br> <input type="radio" name="category"
+					value="15"> Parties 21+
+			</fieldset>
 			<br>
 			<button type="submit" class="btn btn-primary">Search</button>
 
@@ -84,16 +105,22 @@
 	<div class="containerresults clearfix">
 		<p>${num}</p>
 		<c:forEach items="${venueList }" var="venue">
-			<div class="col-lg-11" id="results">
+			<div class="col-lg-12 inline">
 			<h2>
 				<img src="${venue.photoLink}" class="thumbnail" height="100px" width="200px">
 				<a href="<c:url value='/profile?venueId=${venue.venueId}' />">${venue.venueName}</a>
 			</h2>
-				<h4>Category: ${venue.category}</h4>
-				<h4>Price:$${venue.price} per hour</h4>
-				<h4>Capacity: ${venue.capacity} people</h4>
-			<hr>
+			<table>
+				<tr><td>Category: ${venue.category}</td></tr>
+				<tr><td><br></td></tr>
+				<tr><td>Price:$${venue.price} per hour</td></tr>
+				<tr><td><br></td></tr>
+				<tr><td>Capacity: ${venue.capacity} people</td></tr>
+			</table>
+			
 			</div>
+			
+			<hr style="height:1px;border:none;color:#333;background-color:#333;" />
 		</c:forEach>
 	
 

@@ -131,7 +131,7 @@ function validate(){
 							<option value="meetups">Meetups</option>
 							<option value="tradeshow">Trade Show</option>
 							<option value="partiesallages">Parties All Ages</option>
-							<option value="parties21+">Parties 21+</option>
+							<option value="parties21">Parties 21+</option>
 						</select> <br>
 					</div>
 				</div>
