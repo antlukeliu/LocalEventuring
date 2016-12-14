@@ -40,6 +40,7 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="443097452223-brgf9pqihosda3gtc1bmd0f3aj4muh2h.apps.googleusercontent.com">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<a href="#" onclick="signOut();">Sign out</a>
 <form name="login" method="POST" action="accountpage">
 <input type="hidden" name="email">
 <input type="hidden" name="fullName">
@@ -54,6 +55,13 @@ function onSignIn(googleUser) {
       document.getElementsByName("fullName")[0].value=profile.getName();
       document.getElementsByName("id")[0].value=id_token;
     }
+    
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
     
 </script>
 
