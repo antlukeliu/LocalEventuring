@@ -87,21 +87,21 @@ text-decoration: underline;
 <h3><u>Milliza Malabanan</u></h3>
 <td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer with a knack for problem solving and an avid writer. 
 <br>
-<br><td><a href="mailto:milliza.mae@gmail.com" target="_blank">Email</a>&nbsp<a href="https://github.com/millizamae" target="_blank">GitHub</a>&nbsp<a href="https://www.linkedin.com/in/millizamae" target="_blank">LinkedIn</a></td>
+<br><td><a href="mailto:milliza.mae@gmail.com" target="_blank">Email</a>&nbsp&nbsp&nbsp<a href="https://github.com/millizamae" target="_blank">GitHub</a>&nbsp&nbsp&nbsp<a href="https://www.linkedin.com/in/millizamae" target="_blank">LinkedIn</a></td>
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:300px;height:300px;"></td>
 <h3><u>  Frank Daidone</u></h3>
 <td class="description">Frank is a Junior Java Developer who graduated from Michigan State University with a B.S. in Fisheries and Wildlife and gained experience with environmental science as a Wildlife Rehabilitation Intern at Howell Nature Center. 
 <br>
-<br><td><a href="mailto:daidonef1400@gmail.com" target="_blank">Email</a>&nbsp<a href="https://github.com/daidonef" target="_blank">GitHub</a>&nbsp<a href="https://www.linkedin.com/in/frank-daidone" target="_blank">LinkedIn</a></td>
+<br><td><a href="mailto:daidonef1400@gmail.com" target="_blank">Email</a>&nbsp&nbsp&nbsp<a href="https://github.com/daidonef" target="_blank">GitHub</a>&nbsp&nbsp&nbsp<a href="https://www.linkedin.com/in/frank-daidone" target="_blank">LinkedIn</a></td>
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:300px;height:300px;"></td>
 <h3><u> Anthony Liu</u></h3>
 <td class="description">Anthony is a young, hungry Junior Java Developer who enjoys learning more about Java, Python and JavaScript. He is an enthusiastic fan of football, basketball, and League of Legends.
 <br>
-<br><td><a href="mailto:antmliu@outlook.com" target="_blank">Email</a>&nbsp<a href="https://github.com/antlukeliu" target="_blank">GitHub</a>&nbsp<a href="https://www.linkedin.com/in/anthonymliu" target="_blank">LinkedIn</a></td>
+<br><td><a href="mailto:antmliu@outlook.com" target="_blank">Email</a>&nbsp&nbsp&nbsp<a href="https://github.com/antlukeliu" target="_blank">GitHub</a>&nbsp&nbsp&nbsp<a href="https://www.linkedin.com/in/anthonymliu" target="_blank">LinkedIn</a></td>
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:300px;height: 300px;"></td>
