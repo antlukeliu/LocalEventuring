@@ -39,11 +39,10 @@
 		</div>
 	</nav>
 
-<h1>
-	LocalEventuring!  
-</h1>
 
-<div class="container">
+
+<div class="container-fluid">
+<div class="row">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -56,20 +55,20 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481665357/rmnbobrpo1myvutunkjj.png" alt="Chania" width="700" height="700">
+      <div class="item active center">
+        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481665357/rmnbobrpo1myvutunkjj.png" alt="The Sun Room" >
       </div>
 
-      <div class="item">
-        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481658969/ktyfrgipgfbmvb9qh5jy.jpg" alt="Chania" width="700" height="700">
+      <div class="item center">
+        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481658969/ktyfrgipgfbmvb9qh5jy.jpg" alt="Grand Circus" >
       </div>
     
-      <div class="item">
-        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481667309/impsxecwfwbgiu9qb4rv.png" alt="Flower" width="700" height="700">
+      <div class="item center">
+        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481667309/impsxecwfwbgiu9qb4rv.png" alt="The Green Room">
       </div>
 
-      <div class="item">
-        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481571450/sii1uwnhbh57y2i6ezhg.png" alt="Flower" width="700" height="700">
+      <div class="item center">
+        <img src="http://res.cloudinary.com/localeventuring/image/upload/v1481571450/sii1uwnhbh57y2i6ezhg.png" alt="The Penthouse" >
       </div>
     </div>
 
@@ -82,9 +81,13 @@
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+    </div>
   </div>
 </div>
 
+<h1 class = "featured">
+	Featured Venues
+</h1>
 
 
 

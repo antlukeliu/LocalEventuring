@@ -181,6 +181,16 @@ td, th {
 	padding: 0
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+
+.center img{
+	margin: 0 auto;
+	height: 200px;
+	
+	
+}
+
+
+
 @media print {
 	*, *:before, *:after {
 		background: transparent !important;
@@ -307,11 +317,14 @@ img {
 	vertical-align: middle
 }
 
-.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img,
+.img-responsive, 
+.thumbnail>img, 
+.thumbnail a>img, 
+.carousel-inner>.item>img,
 	.carousel-inner>.item>a>img {
 	display: block;
 	max-width: 100%;
-	height: auto
+	height: 450px;
 }
 
 .img-rounded {
@@ -374,6 +387,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: inherit
 }
 
+.featured {
+	font-size: 45px;
+}
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small,
 	.h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small,
 	h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small,
