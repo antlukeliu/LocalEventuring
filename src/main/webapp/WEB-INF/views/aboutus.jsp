@@ -81,28 +81,32 @@ text-size: 30px;
 <tr>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:300px;height:300px;"></td>
 <h3><u>Milliza Malabanan</u></h3>
-<td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer and an avid writer. 
+<td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer with a knack for problem solving and an avid writer. 
 <br>
+<br><u><b>Email:</b></u> milliza.mae@gmail.com <u><b>GitHub:</b></u> https://github.com/millizamae <u><b>LinkedIn:</b></u> https://www.linkedin.com/in/millizamae
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:300px;height:300px;"></td>
 <h3><u>  Frank Daidone</u></h3>
-<td class="description">Frank graduated from Michigan State University with a BS in Fisheries and Wildlife and gained experience with environmental science as a Wildlife Rehabilitation Intern at Howell Nature Center. 
+<td class="description">Frank is a Junior Java Developer who graduated from Michigan State University with a B.S. in Fisheries and Wildlife and gained experience with environmental science as a Wildlife Rehabilitation Intern at Howell Nature Center. 
 <br>
+<br><u><b>Email:</b></u> daidonef1400@gmail.com <u><b>GitHub:</b></u> https://github.com/daidonef <b><u>LinkedIn:</u></b> https://www.linkedin.com/in/frank-daidone
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:300px;height:300px;"></td>
 <h3><u>  Anthony Liu</u></h3>
-<td class="description">Anthony is a young, hungry Junior Developer who enjoys learning more about Java, Python and JavaScript. He is an enthusiastic fan of football, basketball, and League of Legends.
+<td class="description">Anthony is a young, hungry Junior Java Developer who enjoys learning more about Java, Python and JavaScript. He is an enthusiastic fan of football, basketball, and League of Legends.
 <br>
+<br><u><b>Email:</b></u> antmliu@outlook.com <u><b>GitHub:</b></u> https://github.com/antlukeliu <u><b>LinkedIn:</b></u>https://www.linkedin.com/in/anthonymliu
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:300px;height: 300px;"></td>
 <h3><u>Daniel Christiansen</u></h3>
-<td class="description">Daniel is a Junior Java Developer who attended Michigan State University where he majored in Economics, which was insanely boring and a huge waste of time. He has a background working in Business Intelligence, Risk Management, and Insurance Fraud. 
+<td class="description">Daniel is a Junior Java Developer who attended Michigan State University where he majored in Economics. He has a background working in Business Intelligence, Risk Management, and Insurance Fraud. 
+<br>
+<br><u><b>Email:</b></u> dchristiansen40@gmail.com <u><b>GitHub:</b></u> https://github.com/Djc62886 <u><b>LinkedIn:</b></u>https://www.linkedin.com/in/dan-christiansen
 <br>
 <br>
-<br>
-<div class="footerprofile">Local Eventuring <a href="accountpage" >Back to My Account</a></div>
+<div class="footerprofile">Local Eventuring <a href="accountpage" > Back to My Account</a></div>
 </body>
 </html>
