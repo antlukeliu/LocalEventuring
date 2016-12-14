@@ -97,9 +97,10 @@
 </ul>
 
 <div class="container">
-<form name="addform" action="email" method="post">
+<form name="addform" action="emailform" method="post">
 <div class="form-group">
 
+<input type = "hidden" name = "venueId" value = ${venueId}> 
 <input type = "hidden" name = "toEmail" value = ${email}> 
 					<label for="" class="col-lg-2 control-label"></label>
 					<div class="col-lg-5">
