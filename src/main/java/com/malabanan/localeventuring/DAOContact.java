@@ -22,7 +22,7 @@ public class DAOContact {
 		Configuration configuration = new Configuration();
 		// modify these to match your XML files
 		configuration.configure("hibernate.cfg.xml"); //connecting to database
-		configuration.addResource("contact.hbu.xml"); //getting data
+		configuration.addResource("contact.hbm.xml"); //getting data
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		factory = configuration.buildSessionFactory(serviceRegistry);

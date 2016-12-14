@@ -23,7 +23,7 @@ public class DAOVenue {
 		Configuration configuration = new Configuration();
 		// modify these to match your XML files
 		configuration.configure("hibernate.cfg.xml");
-		configuration.addResource("venue.hbu.xml");
+		configuration.addResource("venue.hbm.xml");
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties()).build();
 		factory = configuration.buildSessionFactory(serviceRegistry);
