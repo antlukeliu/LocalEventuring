@@ -46,7 +46,7 @@
 </div>	
 	<div class="left clearfix">
 	<h3>Categories</h3>
-		<form name="form1" action="results" method="GET" class="form-control">
+		<form name="form1" action="searchresults" method="GET" class="form-control">
 			<fieldset id="group1">
 				
 				<p>Price</p>
