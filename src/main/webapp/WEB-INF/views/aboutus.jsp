@@ -87,7 +87,7 @@ text-decoration: underline;
 <h3><u>Milliza Malabanan</u></h3>
 <td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer with a knack for problem solving and an avid writer. 
 <br>
-<br>Send Milliza an <a href="milliza.mae@gmail.com">Email</a>/&nbsp<u><b>GitHub:</b></u> https://github.com/millizamae <u><b>LinkedIn:</b></u> https://www.linkedin.com/in/millizamae</td>
+<br><td>Send Milliza an <a href="milliza.mae@gmail.com" target="_blank">Email</a>&nbsp<a href= https://github.com/millizamae target="_blank">GitHub</a>&nbsp<a href= https://github.com/millizamae target="_blank"></a>&nbsp<a href="https://www.linkedin.com/in/millizamae" target="_blank">LinkedIn</a></td>
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:300px;height:300px;"></td>
