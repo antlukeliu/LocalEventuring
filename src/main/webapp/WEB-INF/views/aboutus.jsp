@@ -35,7 +35,11 @@ text-align: top-right;
 padding: 5px; 
 margin: 0px;
 text-size: 30px; 
+}
 
+a{ 
+font-weight: bold;
+text-decoration: underline; 
 }
 </style>
 </head>
@@ -83,7 +87,7 @@ text-size: 30px;
 <h3><u>Milliza Malabanan</u></h3>
 <td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer with a knack for problem solving and an avid writer. 
 <br>
-<br><u><b>Email:</b></u> milliza.mae@gmail.com <u><b>GitHub:</b></u> https://github.com/millizamae <u><b>LinkedIn:</b></u> https://www.linkedin.com/in/millizamae
+<br>Send Milliza an <a href="milliza.mae@gmail.com">Email</a>/&nbsp<u><b>GitHub:</b></u> https://github.com/millizamae <u><b>LinkedIn:</b></u> https://www.linkedin.com/in/millizamae</td>
 <br>
 <br>
 <td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:300px;height:300px;"></td>
