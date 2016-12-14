@@ -29,7 +29,7 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://localhost:8080/localeventuring">Home</a></li>
+				<li><a href="http://sample-env.dzxmm3mvps.us-east-2.elasticbeanstalk.com">Home</a></li>
 				<li><a href="searchresults">Check Out Venues</a></li>
 				<li><a href="resources/addform.html">Add New Venue</a></li>
 				<li><a href="accountpage">My Account</a></li>

@@ -71,7 +71,7 @@ function validate(){
 			</ul>
 	
 			<ul class="nav navbar-nav navbar-right">
-					<li><a href="http://localhost:8080/localeventuring">Home</a></li>
+					<li><a href="http://sample-env.dzxmm3mvps.us-east-2.elasticbeanstalk.com">Home</a></li>
 					<li><a href="searchresults">Venues</a></li>
 					<li><a href="accountpage">My Account</a></li>
 					<li><a href="login">Login/Logout</a></li>			</ul>
@@ -140,7 +140,7 @@ function validate(){
 					</div>
 				</div>
 				
-				<label class="col-lg-2 control-label"></label> <a href="http://localhost:8080/localeventuring/caldirections" target="_blank"
+				<label class="col-lg-2 control-label"></label> <a href="http://sample-env.dzxmm3mvps.us-east-2.elasticbeanstalk.com/caldirections" target="_blank"
 					class="col-lg-10">Directions on getting Google Calendar iframe</a>
 				<br>
 				<div class="form-group">
