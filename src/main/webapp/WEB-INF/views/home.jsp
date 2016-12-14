@@ -91,6 +91,6 @@
 
 
 
-<footer class="footer">Local Eventuring <a href="aboutus" >Developers</a></footer>
+<footer class="footerprofile">Local Eventuring <a href="aboutus" >Developers</a></footer>
 </body>
 </html>

@@ -9,13 +9,34 @@
 <link rel="stylesheet" href="resources/style.css"> 
 
 <style>
-
+h1{
+ font-weight: bold;
+ font-family: Avenir; 
+ color: #93c54b; 
+}
 h3{
-	position: inline-block; 
+	margin-left: 2.45em; 
+	position:center; 
+	font-family: Avenir; 
+	font-color: black; 
+	font-weight: bold; 
+}
+body{
+background-color: #ffffff; 
+}
+img{
+border: 2px solid; 
 }
 
+td.description{
+min-width: 450px; 
+max-width: 650px; 
+text-align: top-right;
+padding: 5px; 
+margin: 0px;
+text-size: 30px; 
 
-
+}
 </style>
 </head>
 <body>
@@ -54,22 +75,34 @@ h3{
 
 <h1><u>Meet Our Team of Developers</u></h1>
 
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:285px;height:228px;">
+<br>
+<br>
+<br>
+<tr>
+<td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9364.jpg" alt="Milliza" style="width:300px;height:300px;"></td>
 <h3><u>Milliza Malabanan</u></h3>
+<td class="description">Milliza is a graduate of Eastern Michigan University. She is a Junior Java Developer and an avid writer. 
 <br>
-
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:285px;height:228px;">
-<h3><u>Frank Daidone</u></h3>
 <br>
-
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:285px;height:228px;">
-<h3><u>Anthony Liu</u></h3>
 <br>
-
-<img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:285px;height:228px;">
+<td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9363.jpg" alt="Frank" style="width:300px;height:300px;"></td>
+<h3><u>  Frank Daidone</u></h3>
+<td class="description">Frank graduated from Michigan State University with a BS in Fisheries and Wildlife and gained experience with environmental science as a Wildlife Rehabilitation Intern at Howell Nature Center. 
+<br>
+<br>
+<br>
+<td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9351.jpg" alt="Anthony" style="width:300px;height:300px;"></td>
+<h3><u>  Anthony Liu</u></h3>
+<td class="description">Anthony is a young, hungry Junior Developer who enjoys learning more about Java, Python and JavaScript. He is an enthusiastic fan of football, basketball, and League of Legends.
+<br>
+<br>
+<br>
+<td><img src="https://www.grandcircus.co/wp-content/uploads/2016/11/IMG_9370.jpg" alt="Daniel" style="width:300px;height: 300px;"></td>
 <h3><u>Daniel Christiansen</u></h3>
+<td class="description">Daniel is a Junior Java Developer who attended Michigan State University where he majored in Economics, which was insanely boring and a huge waste of time. He has a background working in Business Intelligence, Risk Management, and Insurance Fraud. 
 <br>
-
+<br>
+<br>
 <div class="footerprofile">Local Eventuring <a href="accountpage" >Back to My Account</a></div>
 </body>
 </html>
