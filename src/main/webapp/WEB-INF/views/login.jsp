@@ -4,8 +4,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="${url}">
 <title>Login</title>
+
 <link rel="stylesheet" href="resources/style.css"> 
+<style>
+
+h3{
+	text-align: center;
+}
+
+#login {
+   margin: 0 auto; 
+   text-align: center;
+   vertical-align: middle;
+   padding: 50px;
+   }
+#buttoncenter{
+	
+	margin: 25px 565px;
+}   
+  
+</style>
+<script>
+function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      var id_token = googleUser.getAuthResponse().id_token;
+      document.getElementsByName("email")[0].value=profile.getEmail();
+      document.getElementsByName("fullName")[0].value=profile.getName();
+      document.getElementsByName("id")[0].value=id_token;
+    }
+    
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+    
+</script>
+
+
 </head>
 <body>
 
@@ -37,33 +77,20 @@
 	</nav>
 
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="${url}">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<a href="#" onclick="signOut();">Sign out</a>
-<form name="login" method="POST" action="accountpage">
+<div id="login">
+<div class="g-signin2" data-onsuccess="onSignIn" id="buttoncenter"></div>
+
+<button class="btn btn-warning" onclick="signOut();">Sign Out of Google</button>
+<form name="login" method="POST" action="accountpage" >
+
 <input type="hidden" name="email">
 <input type="hidden" name="fullName">
 <input type="hidden" name="id">
+<br>
+<br>
 <button type="submit" class="btn btn-primary">Continue</button>
 </form>
-<script>
-function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      var id_token = googleUser.getAuthResponse().id_token;
-      document.getElementsByName("email")[0].value=profile.getEmail();
-      document.getElementsByName("fullName")[0].value=profile.getName();
-      document.getElementsByName("id")[0].value=id_token;
-    }
-    
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-    
-</script>
+</div>
 
 <h3>${error}</h3>
 <h3>Disclosure: AdBlock needs to be off in order to have access to accounts</h3>

@@ -67,6 +67,7 @@ public class HomeController {
 		HttpSession session;
 		
 		if (request.getParameter("id").equals("")) {
+			model.addAttribute("url", Geocode.getMapKey());
 			return "login";
 		} 
 			String email = request.getParameter("email").toLowerCase();
@@ -97,7 +98,7 @@ public class HomeController {
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
 		model.addAttribute("id", request.getParameter("id"));
-		
+		model.addAttribute("url", Geocode.getMapKey());
 		return "accountpage";
 	}
 
@@ -109,6 +110,7 @@ public class HomeController {
 		String fullname = (String) session.getAttribute("fullname");
 	
 		if (email == null){
+			model.addAttribute("url", Geocode.getMapKey());
 			return "login";
 		}
 
@@ -131,7 +133,7 @@ public class HomeController {
 		}
 		model.addAttribute("email", email);
 		model.addAttribute("fullname", fullname);
-		
+		model.addAttribute("url", Geocode.getMapKey());
 		return "accountpage";
 	}
 
@@ -172,6 +174,7 @@ public class HomeController {
 		Venue venue = new Venue();
 		
 		if (email == null){
+			model.addAttribute("url", Geocode.getMapKey());
 			return "login";
 		}
 		
