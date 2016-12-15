@@ -150,7 +150,7 @@ public class HomeController {
 		}
 		
 		String category = "";
-		if (request.getParameter("people") != null) {
+		if (request.getParameter("category") != null) {
 			category = request.getParameter("category");
 		}
 		
