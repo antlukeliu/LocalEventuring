@@ -5,6 +5,7 @@
 hibernate.cfg.xml
 PhotoUpload.java
 Send.java 
+Geocode.java
 
 # Intellij
 .idea/

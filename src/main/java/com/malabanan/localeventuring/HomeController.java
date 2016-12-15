@@ -282,6 +282,14 @@ public class HomeController {
 		modelAdding(model,venueId,venueName,roomSize,capacity, 
 				price, category, photoLink, calendarLink, description,
 				street, city, state, zipCode);
+		
+		String addressCode = GoogleGeocode.addressConcat(street, city, state, zipCode);
+		
+		GoogleGeocodeApi geocode = GoogleGeocode.getGeocode(addressCode);
+		
+		model.addAttribute("lat", geocode.getResults().get(0).getGeometry().getLocation().getLat());
+		model.addAttribute("lng", geocode.getResults().get(0).getGeometry().getLocation().getLng());
+		
 		return "venueprofile";
 	}
 	

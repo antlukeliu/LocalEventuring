@@ -148,7 +148,7 @@
 			var map;
 
 			function initMap() {
-				var detroit = new google.maps.LatLng(42.3313889, -83.0458333);
+				var detroit = new google.maps.LatLng(${lat}, ${lng});
 				map = new google.maps.Map(document.getElementById('map'), {
 					zoom : 15,
 					center : detroit
