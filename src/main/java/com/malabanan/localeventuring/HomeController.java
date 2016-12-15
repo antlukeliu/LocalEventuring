@@ -60,7 +60,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/accountpage", method = RequestMethod.POST)
-	public String accountpage(Model model, HttpServletRequest request) {
+	public String accountpage(Model model, HttpServletRequest request) throws IOException {
 
 		model.addAttribute("email", request.getParameter("email"));
 		model.addAttribute("fullname", request.getParameter("fullname"));
@@ -87,6 +87,7 @@ public class HomeController {
 		if(contactId == 0){
 			newContact.setName(fullname);
 			newContact.setEmail(email);
+			SendingEmail.sendingWelcomeMessage(email);
 		}
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact");
@@ -168,7 +169,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/addform", method = RequestMethod.POST)
-	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+	public String addform(Model model, HttpServletRequest request, @RequestParam("file") MultipartFile file) throws IOException {
 
 		HttpSession session = request.getSession(true);
 		String email = (String) session.getAttribute("loginemail");
@@ -209,6 +210,7 @@ public class HomeController {
 			contact.setEmail(loginEmail);
 			contact.setName(fullName);
 			DAOContact.addContact(contact);
+			SendingEmail.sendingWelcomeMessage(loginEmail);
 		}
 		
 		contactId = findingContactId(loginEmail);
