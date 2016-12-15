@@ -108,7 +108,7 @@ text-decoration: underline;
 <h3><u>Daniel Christiansen</u></h3>
 <td class="description">Daniel is a Junior Java Developer who attended Michigan State University where he majored in Economics. He has a background working in Business Intelligence, Risk Management, and Insurance Fraud. 
 <br>
-<br><td><a href="mailto:dchristiansen40@gmail.com" target="_blank">Email</a>&nbsp<a href="https://github.com/Djc62886" target="_blank">GitHub</a>&nbsp<a href="https://www.linkedin.com/in/dan-christiansen" target="_blank">LinkedIn</a></td>
+<br><td><a href="mailto:dchristiansen40@gmail.com" target="_blank">Email</a>&nbsp&nbsp&nbsp<a href="https://github.com/Djc62886" target="_blank">GitHub</a>&nbsp&nbsp&nbsp<a href="https://www.linkedin.com/in/dan-christiansen" target="_blank">LinkedIn</a></td>
 <br>
 <br>
 <div class="footerprofile">Local Eventuring <a href="accountpage" > Back to My Account</a></div>
