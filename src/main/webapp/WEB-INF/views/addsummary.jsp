@@ -43,11 +43,11 @@
 <h1><c:out value="${venueName }"/></h1><br>
 <ul>
 <li>Room Size (sq ft.):</b> <c:out value="${roomSize }"/></li><br>
-<b><li>Capacity:</b> <c:out value="${capacity }"/><br>
-<b><li>Price Per Hour: </b> <c:out value="${price }"/><br>
-<img src = "${photoLink}"><br>
+<b><li>Capacity:</b> <c:out value="${capacity }"/></li><br>
+<b><li>Price Per Hour: </b> <c:out value="${price }"/></li><br>
+<li><img src = "${photoLink}"></li><br>
 <li>${calendarLink }</li><br>
-<b><li>Venue Description: </b> <c:out value="${description }"/><br> 
+<b><li>Venue Description: </b> <c:out value="${description }"/></li><br> 
 </ul>
 
 </body>
