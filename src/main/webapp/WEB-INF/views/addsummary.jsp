@@ -46,9 +46,11 @@
 <b><li>Capacity:</b> <c:out value="${capacity }"/></li><br>
 <b><li>Price Per Hour: </b> <c:out value="${price }"/></li><br>
 <li><img src = "${photoLink}"></li><br>
-<li>${calendarLink }</li><br>
+<li></li><br>
 <b><li>Venue Description: </b> <c:out value="${description }"/></li><br> 
 </ul>
-
+<div>
+${calendarLink }
+</div>
 </body>
 </html>

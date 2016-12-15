@@ -229,15 +229,17 @@ public class HomeController {
 			e.printStackTrace();
 		}
 
-		modelAdding(model,contactId,venueName,roomSize,capacity, 
-				price, category, urlPic, calLink, description,
-				address, city, state, zipCode);
-		
 		venue = settingVenue(contactId,venueName,roomSize,
 				capacity, price, category, urlPic, calLink, description, 
 				address, city, state, zipCode);
 		
 		DAOVenue.addVenue(venue);
+		
+		calLink = venue.getCalendarLink();
+		
+		modelAdding(model,contactId,venueName,roomSize,capacity, 
+				price, category, urlPic, calLink, description,
+				address, city, state, zipCode);
 
 		return "addsummary";
 	}
