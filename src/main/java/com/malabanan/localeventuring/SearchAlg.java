@@ -53,11 +53,11 @@ public class SearchAlg {
 		map.put("8", " (capacity <= 45 and capacity > 30 ) ");
 		map.put("9", " (capacity <= 60 and capacity > 45 ) ");
 		map.put("10", " (capacity >= 60 ) ");
-		map.put("11", " category = 'meetings' ");
-		map.put("12", " category = 'meetups' ");
-		map.put("13", " category = 'tradeshows' ");
-		map.put("14", " category = 'partiesallages' ");
-		map.put("15", " category = 'parties21' ");
+		map.put("11", " category = 'Meetings' ");
+		map.put("12", " category = 'Meetups' ");
+		map.put("13", " category = 'Parties 21+' ");
+		map.put("14", " category = 'Parties All Ages' ");
+		map.put("15", " category = 'Tradeshows' ");
 		return map;
 	}
 }
