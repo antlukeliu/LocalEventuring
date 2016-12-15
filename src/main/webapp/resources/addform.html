@@ -12,6 +12,7 @@
 	}
 
 function clicking(){
+	
 	var vm = document.forms["addform"]["venueName"].value;
 	var rs = document.forms["addform"]["roomSize"].value;
 	var cp = document.forms["addform"]["capacity"].value;
@@ -22,9 +23,11 @@ function clicking(){
 	var st = document.forms["addform"]["state"].value;
 	var zip = document.forms["addform"]["zipCode"].value;
 	
+	console.log("This ran");
+	
 	var reg = /^\d+$/;
 	
-	if (fn <= 2){
+	if (fn.length < 2){
 		alert("Name is too short");
 		return false;
 	}else if(reg.test(rs) === false){
@@ -42,7 +45,7 @@ function clicking(){
 	}else if (/^[0-9]{5}(?:-[0-9]{4})?$/.test(zip) === false ){
 		alert("Invalid Zip Code");
 		return false;
-	else{
+	}else{
 		return true;
 	}
 }
@@ -79,8 +82,8 @@ function clicking(){
 	</nav>
 	<!--/.main-header-->
 	<div class="container">
-		<form name="addform" action="../addform" method="post"
-			enctype="multipart/form-data" class="form-horizontal" onSubmit="return clicking()">
+		<form name="addform" onsubmit="return clicking()" action="../addform" method="post"
+			enctype="multipart/form-data" class="form-horizontal">
 			<fieldset>
 				<legend>Enter the Required Information</legend>
 				<div class="form-group">
