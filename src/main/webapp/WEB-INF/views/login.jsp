@@ -38,7 +38,7 @@
 
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="443097452223-brgf9pqihosda3gtc1bmd0f3aj4muh2h.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="${url}">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <a href="#" onclick="signOut();">Sign out</a>
 <form name="login" method="POST" action="accountpage">

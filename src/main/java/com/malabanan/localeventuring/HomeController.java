@@ -49,6 +49,8 @@ public class HomeController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest request) {
 		
+		model.addAttribute("url", Geocode.getMapKey());
+		
 		HttpSession sessionClear = request.getSession(true); 
 		sessionClear.invalidate(); //delete session when you enter login
 
