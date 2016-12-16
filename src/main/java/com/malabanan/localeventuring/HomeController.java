@@ -445,7 +445,7 @@ public class HomeController {
 		}
 		
 		List<Contact> contacts = DAOContact.getContacts("From Contact where contactId =" +contactId);		
-
+		
 		for(Contact c: contacts){
 			if(c.getEmail().equalsIgnoreCase(loginEmail)){
 				continue;
@@ -453,7 +453,7 @@ public class HomeController {
 				return "accessdenied";
 			}
 		}
-		
+		calendarLink = calendarLink.replaceAll("\"", "'");
 		model.addAttribute("email", loginEmail);
 		model.addAttribute("contactId", contactId);
 		modelAdding(model,rankNum,venueName,roomSize,capacity, 

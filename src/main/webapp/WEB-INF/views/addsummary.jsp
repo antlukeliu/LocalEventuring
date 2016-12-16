@@ -48,6 +48,10 @@
 <li><img src = "${photoLink}"></li><br>
 <b><li>Venue Description: </b> <c:out value="${description }"/></li><br> 
 </ul>
+<<<<<<< Updated upstream
+=======
+<div>
+>>>>>>> Stashed changes
 <img src ="${calendarLink }"/>
 </div>
 </body>

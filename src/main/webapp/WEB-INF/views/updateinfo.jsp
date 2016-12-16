@@ -45,10 +45,16 @@ function validate(){
 	}else if (/^[0-9]{5}(?:-[0-9]{4})?$/.test(zip) === false ){
 		alert("Invalid Zip Code");
 		return false;
-	else{
+	}else{
 		return true;
 	}
 }
+
+function escape(uri){
+	
+	return encodeURI(uri);
+}
+
 </script>
 </head>
 <body>
@@ -144,11 +150,12 @@ function validate(){
 					class="col-lg-10">Directions on getting Google Calendar iframe</a>
 				<br>
 				<div class="form-group">
-
+					
+					<br>
 					<label class="col-lg-2 control-label">Calendar Link:</label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" name="calendarLink"
-							value="${calendarLink}">
+							value= "${calendarLink}" >
 					</div>
 				</div>
 
